@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 19:35:11 by cgross-s          #+#    #+#             */
-/*   Updated: 2024/10/22 19:35:13 by cgross-s         ###   ########.fr       */
+/*   Created: 2024/10/22 22:17:52 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/10/22 22:17:54 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /*
-isalnum()
-checks for an alphanumeric character; it is equivalent to 
-(isalpha(c) || isdigit(c)).
+isprint()
+checks for any printable character including space.
+32-126
 */
-int	isalnum(int c)
+int	isprint(int c)
 {
-	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	if (c >= 31 && c <= 126)
 		return (c);
 	else
 		return (0);
 }
-
 /*
-RETURN VALUE:
-The  values  returned  are nonzero if the character c 
-falls into the tested class, and zero if not.
+RETURN VALUE
+    The  values  returned  are nonzero if the character 
+c falls into the tested class, and zero if not.
 */

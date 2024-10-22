@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 19:35:11 by cgross-s          #+#    #+#             */
-/*   Updated: 2024/10/22 19:35:13 by cgross-s         ###   ########.fr       */
+/*   Created: 2024/10/22 22:08:30 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/10/22 22:08:32 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /*
-isalnum()
-checks for an alphanumeric character; it is equivalent to 
-(isalpha(c) || isdigit(c)).
+isascii(): checks whether c is a 7-bit unsigned 
+char value that fits into the ASCII character set.
+0 - 127
 */
-int	isalnum(int c)
+int	isascii(int c)
 {
-	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	if (c >= 0 && c <= 127)
 		return (c);
 	else
 		return (0);
 }
 
-/*
-RETURN VALUE:
+/*RETURN VALUE
 The  values  returned  are nonzero if the character c 
-falls into the tested class, and zero if not.
-*/
+falls into the tested class, and zero if not.*/
