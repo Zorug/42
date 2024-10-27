@@ -1,0 +1,11 @@
+NO 42 HEADER
+libft.h
+ft_strlen.c
+...
+
+UNFINISHED FUNCTIONS
+ft_memmove.c
+
+SEARCH IN PISCINE AND UPDATE
+ft_strlcpy.c
+ft_strlcat.c
