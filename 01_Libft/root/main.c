@@ -4,14 +4,12 @@
 
 int main()
 {
-	const char *s;
-	char c;
+    char destination[20] = "123456";
+    const char *source = "7890";
+    size_t total_length;
 
-	s = "fernanda martins de oliveira correa";
-	c = 'r';
-
-	printf("first = %s\n", ft_strchr(s, c));
-	printf("first = %s\n", strchr(s, c));
-	printf("last = %s\n", ft_strrchr(s, c));
-	printf("last = %s\n", strrchr(s, c));
+    total_length = ft_strlcat(destination, source, sizeof(destination));
+    printf("Concatenated string: %s\n", destination);
+    printf("Total length: %zu\n", total_length);
+    return (0);
 }
