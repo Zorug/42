@@ -4,18 +4,17 @@
 
 int main()
 {
-    char *original = "42 São Paulo";
-    char *copia = ft_strdup(original);
+    char *s1 = "42 ";
+    char *s2 = "São Paulo";
+    char *joined = ft_strjoin(s1, s2);
 
-    if (!copia)
+    if (joined)
+    {
+        printf("Resultado da junção: %s\n", joined);
+        free(joined);  // Libera a memória alocada para a string concatenada
+    }
+    else
     {
         printf("Falha na alocação de memória.\n");
-        return 1;
     }
-
-    printf("Original: %s\n", original);
-    printf("Cópia: %s\n", copia);
-
-    free(copia);  // Libera a memória alocada para a cópia
-    return 0;
 }
