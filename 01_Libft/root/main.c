@@ -4,12 +4,18 @@
 
 int main()
 {
-    char destination[20] = "123456";
-    const char *source = "7890";
-    size_t total_length;
+    char *original = "42 São Paulo";
+    char *copia = ft_strdup(original);
 
-    total_length = ft_strlcat(destination, source, sizeof(destination));
-    printf("Concatenated string: %s\n", destination);
-    printf("Total length: %zu\n", total_length);
-    return (0);
+    if (!copia)
+    {
+        printf("Falha na alocação de memória.\n");
+        return 1;
+    }
+
+    printf("Original: %s\n", original);
+    printf("Cópia: %s\n", copia);
+
+    free(copia);  // Libera a memória alocada para a cópia
+    return 0;
 }
