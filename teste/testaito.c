@@ -1,5 +1,5 @@
 #include <stdio.h>
-int	ft_atoi(const char *nptr)
+/*int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	sign;
@@ -23,11 +23,13 @@ int	ft_atoi(const char *nptr)
 	}
 	return (res * sign);
 }
-
+*/
 int main()
 {
 	const char *nptr;
 
-	nptr = "-12345";
-	printf("%d", ft_atoi(nptr));
+	nptr = "cassiano";
+	//printf("%d", ft_atoi(nptr));
+	printf("%c\t", nptr[0]);
+	printf("%c\n", ft_strlen(nptr) - 1);
 }

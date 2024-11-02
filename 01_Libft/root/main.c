@@ -4,17 +4,19 @@
 
 int main()
 {
-    char *s1 = "42 ";
-    char *s2 = "São Paulo";
-    char *joined = ft_strjoin(s1, s2);
+    char *s1 = "*_ 01234 * _";
+    char *set = " *_";
+    char *trimmed = ft_strtrim(s1, set);
 
-    if (joined)
+    if (trimmed)
     {
-        printf("Resultado da junção: %s\n", joined);
-        free(joined);  // Libera a memória alocada para a string concatenada
+        printf("Resultado: '%s'\n", trimmed);
+        free(trimmed);
     }
     else
     {
         printf("Falha na alocação de memória.\n");
     }
+
+    return 0;
 }
