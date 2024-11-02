@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 19:50:58 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/11/02 19:50:59 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*DESCRIPTION
 	   The  strlen() function calculates the length of the string pointed to
 	   by s, excluding the terminating null byte ('\0').*/

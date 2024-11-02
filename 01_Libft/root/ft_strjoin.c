@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 19:58:28 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/11/02 19:58:29 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*Allocates (with malloc(3)) and returns a new
 string, which is the result of the concatenation
 of ’s1’ and ’s2’.

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 19:53:25 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/11/02 19:53:27 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*The strlcpy() copy and concatenate  strings respectively. 
 Strlcpy() take the full size of the buffer (not just the length) 
 and  guarantee to NUL-terminate the result (as long as size is 

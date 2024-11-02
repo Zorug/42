@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 19:53:38 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/11/02 19:53:39 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*strlcat() functions copy and concatenate strings respectively. 
 strlcat() take the full size of the buffer (not just the length) and 
 guarantee to NUL-terminate the result (as long as size is 
