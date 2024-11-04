@@ -1,6 +1,6 @@
-#include <stdio.h>
+/*#include "libfth"
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	itoanum[11];//maxsize neg int
 	int		sign;
@@ -8,9 +8,4 @@ char *ft_itoa(int n)
 	ft_bzero(itoanum, 11);
 	if (n < 0)
 	return (itoanum);
-}
-
-int main()
-{
-	printf("%s", ft_itoa(42));
-}
+}*/

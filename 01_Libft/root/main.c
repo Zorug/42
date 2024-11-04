@@ -2,16 +2,18 @@
 #include <string.h>
 #include "libft.h"
 
-int main()
+int main(void)
 {
-    char *s1 = "*_ 01234 * _";
-    char *set = " *_";
-    char *trimmed = ft_strtrim(s1, set);
-
-    if (trimmed)
+    char **result = ft_split("###42 São#Paulo##é#incrível##", '#');
+    if (result)
     {
-        printf("Resultado: '%s'\n", trimmed);
-        free(trimmed);
+        for (int i = 0; result[i] != NULL; i++)
+            printf("Substring %d: %s\n", i, result[i]);
+        
+        // Libera cada substring e o array
+        for (int i = 0; result[i] != NULL; i++)
+            free(result[i]);
+        free(result);
     }
     else
     {

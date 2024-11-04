@@ -15,42 +15,86 @@
 int	count_words(char const *s, char c)
 {
 	int		i;
-	int		count;
+	int		words;
 
 	i = 0;
-	count = 0;/*número de palavras*/
+	words = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] != c)
 		{
-			while (s[i] == c && s[i]) /*caso haja mais de um seguido*/
+			words++;
+			while (s[i] != c && s[i] != '\0')
 				i++;
 			if (s[i] == '\0')
-				break;
-			else
-				count++;
+				return (words);
 		}
-		else
-			i++;
+		i++;
 	}
-	return (count);
+	return (words);
+}
+
+void	create_word(char *word, char const *s, char c, int i)
+{
+	int	j;
+
+	j = 0;
+	while (s[i] != '\0' && s[i] == c)
+		i++;
+	while (s[i + j] != c && s[i + j] != '\0')
+	{
+		word[j] = s[i + j];
+		j++;
+	}
+	word[j] = '\0';
+}
+
+char	*allocate(char const *s, char c, int *pos)
+{
+	char	*word;
+	int		i;
+
+	i = *pos;
+	while (s[*pos] != '\0')
+	{
+		if (s[*pos] != c)
+		{
+			while (s[*pos] != '\0' && s[*pos] != c)
+				*pos += 1;
+			word = (char *)malloc(sizeof(char) * (*pos + 1));
+			if (!word)
+				return (NULL);
+			break ;
+		}
+		*pos += 1;
+	}
+	create_word(word, s, c, i);
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**splitted;
-	int		i;
-	//size_t	words; /*conta palavras*/
-	//size_t	slen;
-	int		n_words;
+	char		**splitted;
+	int			i;
+	int			n_words;
+	int			pos;
 
+	if (!s)
+		return (NULL);
 	i = 0;
+	pos = 0;
 	n_words = count_words(s, c);
-
-	splitted = (char **)malloc(sizeof(char *) * n_words);
-	while (splitted[i])
+	splitted = (char **)malloc(sizeof(char *) * (n_words + 1));
+	if (!splitted)
+		return (NULL);
+	while (i < n_words)
 	{
-		splitted[i] = malloc(sizeof(char) * (n + 1))
+		splitted[i] = allocate(s, c, &pos);
+		if (!splitted[i])
+		{
+			free(splitted);
+			return (NULL);
+		}
 		i++;
 	}
 	return (splitted);
