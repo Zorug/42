@@ -4,16 +4,13 @@
 
 int main(void)
 {
-    char **result = ft_split("###42 São#Paulo##é#incrível##", '#');
-    if (result)
+    int num = 0;
+    char *str = ft_itoa(num);
+
+    if (str)
     {
-        for (int i = 0; result[i] != NULL; i++)
-            printf("Substring %d: %s\n", i, result[i]);
-        
-        // Libera cada substring e o array
-        for (int i = 0; result[i] != NULL; i++)
-            free(result[i]);
-        free(result);
+        printf("\nO número como string é: %s\n", str);
+        free(str);  // Libera a memória alocada para a string
     }
     else
     {
