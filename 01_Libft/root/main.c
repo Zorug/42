@@ -2,20 +2,18 @@
 #include <string.h>
 #include "libft.h"
 
+char my_function(unsigned int i, char c)
+{
+    return (c + i);  // Adiciona o índice ao caractere (exemplo simples)
+}
+
 int main(void)
 {
-    int num = 0;
-    char *str = ft_itoa(num);
-
-    if (str)
+    char *result = ft_strmapi("Hello", my_function);
+    if (result)
     {
-        printf("\nO número como string é: %s\n", str);
-        free(str);  // Libera a memória alocada para a string
+        printf("Resultado: %s\n", result);
+        free(result);  // Libera a memória alocada
     }
-    else
-    {
-        printf("Falha na alocação de memória.\n");
-    }
-
     return 0;
 }
