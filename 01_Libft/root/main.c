@@ -2,18 +2,15 @@
 #include <string.h>
 #include "libft.h"
 
-char my_function(unsigned int i, char c)
+void my_function(unsigned int i, char *c)
 {
-    return (c + i);  // Adiciona o índice ao caractere (exemplo simples)
+    *c = *c + i;  // Incrementa o caractere pelo valor do índice (exemplo simples)
 }
 
 int main(void)
 {
-    char *result = ft_strmapi("Hello", my_function);
-    if (result)
-    {
-        printf("Resultado: %s\n", result);
-        free(result);  // Libera a memória alocada
-    }
+    char str[] = "Hello";
+    ft_striteri(str, my_function);
+    printf("Resultado: %s\n", str);
     return 0;
 }

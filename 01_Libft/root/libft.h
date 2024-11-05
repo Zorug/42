@@ -15,6 +15,7 @@
 
 #include <stdlib.h> // malloc, free, etc
 #include <stdio.h>
+#include <unistd.h>
 
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);
@@ -54,5 +55,10 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
