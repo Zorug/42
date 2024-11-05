@@ -34,7 +34,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ptr;
 	size_t	pos_start;
 	size_t	pos_end;
-	int		i;
+	size_t	i;
 	int		j;
 
 	if (!s1 || !set)
