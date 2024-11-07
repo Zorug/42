@@ -25,20 +25,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	if (!s1 || !s2)
-		return NULL;
+		return (NULL);
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
 	ptr = malloc((lens1 + lens2 + 1) * sizeof(char));
 	if (ptr == NULL)
-		return NULL;
+		return (NULL);
 	i = -1;
 	while (++i < lens1)
 		ptr[i] = s1[i];
 	j = -1;
 	while (++j < lens2)
-		ptr[i+j] = s2[j];
-	ptr[i+j] = '\0';
-	return ptr;
+		ptr[i + j] = s2[j];
+	ptr[i + j] = '\0';
+	return (ptr);
 }
 
 /*

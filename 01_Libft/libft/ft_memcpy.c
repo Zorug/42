@@ -24,13 +24,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*d;
 	const char	*s;
 
-	i = -1;
 	if (dest == NULL || src == NULL)
 		return (NULL);
 	if (n == 0 || dest == src)
 		return (dest);
 	d = (char *)dest;
 	s = (const char *)src;
+	i = -1;
 	while (++i < n)
 		d[i] = s[i];
 	return (dest);
