@@ -21,6 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	char	*ptr;
 
 	ptr = NULL;
+	c = (unsigned char)c;
 	while (*s)
 	{
 		if (*s == c)

@@ -18,31 +18,24 @@ maximum size ’len’
 */
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	i;
-	size_t	j;
+	size_t	str_len;
+	size_t	actual_len;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	if ((size_t)start > ft_strlen(s))
+	str_len = ft_strlen(str);
+	if (start >= str_len)
 		return (ft_strdup(""));
-	substr = malloc((len + 1) * sizeof(char));
-	if (substr == NULL)
+	actual_len = str_len - start;
+	if (actual_len > len)
+		actual_len = len;
+	substr = malloc((actual_len + 1) * sizeof(char));
+	if (!substr)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			substr[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	substr[j] = '\0';
+	ft_strlcpy(substr, str + start, actual_len + 1);
 	return (substr);
 }
 

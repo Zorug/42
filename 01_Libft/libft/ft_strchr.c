@@ -18,6 +18,7 @@ with wide or multibyte characters.*/
 
 char	*ft_strchr(const char *s, int c)
 {
+	c = (unsigned char)c;
 	while (*s)
 	{
 		if (*s == c)
