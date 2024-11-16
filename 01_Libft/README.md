@@ -1,6 +1,6 @@
 # Title
 
-## Subtitle
+## Subtitle: aqui tem um link.
 There is a hyperlink now. They can be found [here](https://fbm.digital/1#bingo "FBMDS - Video Bingo").
 
 Text text text :)
@@ -9,14 +9,13 @@ Text text text :)
 Yara Yada yaga:
 - Lerolero;
 
-## Subtitle
+## Imagem com link abaixo:
 Blablabla.
 
 - Bla           - blablabla;
 
 
-** Prize table refers to a group of patterns of which the player gets prizes. The less probability of getting a pattern, the higher is the prize.
-
+** Prize table...
 ![Prize table](https://github.com/Zorug/Projetos_Completos/blob/master/Bingo_Projet/prize_table.png?raw=true)
 
 ## Developer
