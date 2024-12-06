@@ -73,7 +73,7 @@ To use the libft library in your projects:
 
 ### Project Structure
 
-```bash
+	```bash
 	libft/
 	├── ft_atoi.c          # Convert string to integer
 	├── ft_bzero.c         # Zero out memory
