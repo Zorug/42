@@ -55,7 +55,7 @@ The **Libft** project consists of reimplementing functions from the C standard l
 
 3. This will generate the libft.a file, which you can link to your own projects.
 
-### How to Use
+## How to Use
 
 To use the libft library in your projects:
 
@@ -71,7 +71,7 @@ To use the libft library in your projects:
 	```bash
 	./my_program
 
-### Project Structure
+## Project Structure
 
 	```bash
 	libft/
@@ -85,33 +85,33 @@ To use the libft library in your projects:
 	├── Makefile           # Compilation rules for the library
 	└── ...
 
-### Functions Implemented
-#### Part 1: Libc Functions
+## Functions Implemented
+### Part 1: Libc Functions
 
     - ft_strlen - Calculate the length of a string.
     - ft_strchr - Locate a character in a string.
     - ft_memcpy - Copy memory area.
     - ft_strdup - Duplicate a string.
 
-#### Part 2: Additional Functions
+### Part 2: Additional Functions
 
     - ft_substr - Extract a substring from a string.
     - ft_strjoin - Concatenate two strings into a new one.
     - ft_itoa - Convert an integer to a string.
     - ft_split - Split a string into an array of substrings.
 
-#### Bonus: Linked List Functions (This project have no bonus yet)
+### Bonus: Linked List Functions (This project have no bonus yet)
 
     - ft_lstnew - Create a new node.
     - ft_lstadd_front - Add a node to the front of a list.
     - ft_lstdelone - Delete a node and free its memory.
     - ft_lstmap - Apply a function to each element of a list and create a new list.
 
-### Testing
+## Testing
 
 To test the library:
 
 1. Use the provided main.c file or create your own.
 2. Alternatively, you can use external testing frameworks like Francinette or LibftTester.
 	```bash
-make test
+	make test
