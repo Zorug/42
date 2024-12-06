@@ -50,6 +50,7 @@ The **Libft** project consists of reimplementing functions from the C standard l
    cd libft
 
 2. Compile the library:
+	```bash
 	make
 
 3. This will generate the libft.a file, which you can link to your own projects.
@@ -59,12 +60,58 @@ The **Libft** project consists of reimplementing functions from the C standard l
 To use the libft library in your projects:
 
 1. Include the library header in your source files:
+	```bash
 	#include "libft.h"
 
 2. Compile your program and link it with libft.a:
+	```bash
 	gcc -Wall -Wextra -Werror main.c -L. -lft -o my_program
 
 3. Run your program:
+	```bash
 	./my_program
 
-NEED TO FINISH IT
+### Project Structure
+
+```bash
+	libft/
+	├── ft_atoi.c          # Convert string to integer
+	├── ft_bzero.c         # Zero out memory
+	├── ft_calloc.c        # Allocate memory and initialize to zero
+	├── ft_isalpha.c       # Check if a character is alphabetic
+	├── ft_lstnew.c        # Create a new linked list node
+	├── ft_memcpy.c        # Copy memory area
+	├── libft.h            # Header file containing all function prototypes
+	├── Makefile           # Compilation rules for the library
+	└── ...
+
+### Functions Implemented
+## Part 1: Libc Functions
+
+    - ft_strlen - Calculate the length of a string.
+    - ft_strchr - Locate a character in a string.
+    - ft_memcpy - Copy memory area.
+    - ft_strdup - Duplicate a string.
+
+## Part 2: Additional Functions
+
+    - ft_substr - Extract a substring from a string.
+    - ft_strjoin - Concatenate two strings into a new one.
+    - ft_itoa - Convert an integer to a string.
+    - ft_split - Split a string into an array of substrings.
+
+## Bonus: Linked List Functions (This project have no bonus yet)
+
+    - ft_lstnew - Create a new node.
+    - ft_lstadd_front - Add a node to the front of a list.
+    - ft_lstdelone - Delete a node and free its memory.
+    - ft_lstmap - Apply a function to each element of a list and create a new list.
+
+### Testing
+
+To test the library:
+
+1. Use the provided main.c file or create your own.
+2. Alternatively, you can use external testing frameworks like Francinette or LibftTester.
+	```bash
+make test
