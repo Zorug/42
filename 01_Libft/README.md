@@ -88,24 +88,24 @@ To use the libft library in your projects:
 ## Functions Implemented
 ### Part 1: Libc Functions
 
-    - ft_strlen - Calculate the length of a string.
-    - ft_strchr - Locate a character in a string.
-    - ft_memcpy - Copy memory area.
-    - ft_strdup - Duplicate a string.
+- ft_strlen - Calculate the length of a string.
+- ft_strchr - Locate a character in a string.
+- ft_memcpy - Copy memory area.
+- ft_strdup - Duplicate a string.
 
 ### Part 2: Additional Functions
 
-    - ft_substr - Extract a substring from a string.
-    - ft_strjoin - Concatenate two strings into a new one.
-    - ft_itoa - Convert an integer to a string.
-    - ft_split - Split a string into an array of substrings.
+- ft_substr - Extract a substring from a string.
+- ft_strjoin - Concatenate two strings into a new one.
+- ft_itoa - Convert an integer to a string.
+- ft_split - Split a string into an array of substrings.
 
 ### Bonus: Linked List Functions (This project have no bonus yet)
 
-    - ft_lstnew - Create a new node.
-    - ft_lstadd_front - Add a node to the front of a list.
-    - ft_lstdelone - Delete a node and free its memory.
-    - ft_lstmap - Apply a function to each element of a list and create a new list.
+- ft_lstnew - Create a new node.
+- ft_lstadd_front - Add a node to the front of a list.
+- ft_lstdelone - Delete a node and free its memory.
+- ft_lstmap - Apply a function to each element of a list and create a new list.
 
 ## Testing
 
