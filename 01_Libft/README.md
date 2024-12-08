@@ -55,6 +55,8 @@ The **Libft** project consists of reimplementing functions from the C standard l
 
 3. This will generate the libft.a file, which you can link to your own projects.
 
+---
+
 ## How to Use
 
 To use the libft library in your projects:
@@ -71,8 +73,10 @@ To use the libft library in your projects:
 	```bash
 	./my_program
 
-## Project Structure
 
+---
+
+## Project Structure
 	```bash
 	libft/
 	├── ft_atoi.c          # Convert string to integer
@@ -84,6 +88,8 @@ To use the libft library in your projects:
 	├── libft.h            # Header file containing all function prototypes
 	├── Makefile           # Compilation rules for the library
 	└── ...
+
+---
 
 ## Functions Implemented
 ### Part 1: Libc Functions
@@ -106,6 +112,8 @@ To use the libft library in your projects:
 - ft_lstadd_front - Add a node to the front of a list.
 - ft_lstdelone - Delete a node and free its memory.
 - ft_lstmap - Apply a function to each element of a list and create a new list.
+
+---
 
 ## Testing
 
