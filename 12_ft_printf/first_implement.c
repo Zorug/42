@@ -15,10 +15,11 @@ int print_str(char *str)
 	count = 0;
 	while (*str != '\0')
 	{
-		print_char((int)*str):
-		++count:
-		++str:
+		print_char((int)*str);
+		++count;
+		++str;
 	}
+	return (count);
 }
 
 int print_digit(long n, int base)
