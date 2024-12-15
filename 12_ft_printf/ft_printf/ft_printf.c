@@ -9,6 +9,8 @@ int print_format(char specifier, va_list ap)
 		count += print_char(va_arg(ap, int));
 	else if (specifier == 's')
 		count += print_str(va_arg(ap, char *));
+	else if (specifier == 'p')
+		count += print_ptr(va_arg(ap, void *));
 	return count;
 }
 
