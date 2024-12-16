@@ -11,6 +11,10 @@ int print_format(char specifier, va_list ap)
 		count += print_str(va_arg(ap, char *));
 	else if (specifier == 'p')
 		count += print_ptr(va_arg(ap, void *));
+	else if (specifier == 'd' || specifier == 'i')
+		count += print_nbr(va_arg(ap, int), 0);
+	else if (specifier == 'u')
+		count += print_nbr(va_arg(ap, int), 1);
 	return count;
 }
 
