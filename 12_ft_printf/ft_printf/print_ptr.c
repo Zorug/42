@@ -34,14 +34,17 @@ int	print_ptr(void *ptr)
 	count = 0;
 	hex_str = NULL;
 	if (ptr == NULL)
-		count += print_str("(nil)");
+		//count += print_str("(nil)");
+		count += ft_putstr("(nil)");
 	else
 	{
-		count += print_str("0x");
+		//count += print_str("0x");
+		count += ft_putstr("0x");
 		hex_str = putnbrptr((uintptr_t)ptr, "0123456789abcdef");
 		if (hex_str)
 		{
-			count += print_str(hex_str);
+			//count += print_str(hex_str);
+			count += ft_putstr(hex_str);
 			free (hex_str);
 		}
 	}

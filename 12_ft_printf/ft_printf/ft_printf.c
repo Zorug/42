@@ -6,15 +6,16 @@ int print_format(char specifier, va_list ap)
 
 	count = 0;
 	if (specifier == 'c')
-		count += print_char(va_arg(ap, int));
+		count += ft_putchar(va_arg(ap, int));
 	else if (specifier == 's')
-		count += print_str(va_arg(ap, char *));
+		//count += print_str(va_arg(ap, char *));
+		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'p')
 		count += print_ptr(va_arg(ap, void *));
 	else if (specifier == 'd' || specifier == 'i')
-		count += print_nbr(va_arg(ap, int), 0);
+		count += ft_putnbr(va_arg(ap, int));
 	else if (specifier == 'u')
-		count += print_nbr(va_arg(ap, int), 1);
+		count += ft_putnbr_unsigned(va_arg(ap, int));
 	return count;
 }
 

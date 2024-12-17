@@ -18,7 +18,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # Source files for ft_printf
-SRCS = ft_printf.c print_char.c print_str.c ft_convert_base.c print_ptr.c #ft_printf_utils.c  # Add other ft_printf source files here
+SRCS = ft_printf.c ft_putchar.c ft_putstr.c ft_convert_base.c print_ptr.c ft_putnbr.c #ft_printf_utils.c  # Add other ft_printf source files here
 
 # Libft folder and source files
 LIBFT_DIR = libft
