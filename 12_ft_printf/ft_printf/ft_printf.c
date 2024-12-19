@@ -11,11 +11,17 @@ int print_format(char specifier, va_list ap)
 		//count += print_str(va_arg(ap, char *));
 		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'p')
-		count += print_ptr(va_arg(ap, void *));
+		count += ft_putptr(va_arg(ap, void *));
 	else if (specifier == 'd' || specifier == 'i')
 		count += ft_putnbr(va_arg(ap, int));
 	else if (specifier == 'u')
 		count += ft_putnbr_unsigned(va_arg(ap, int));
+	else if (specifier == 'x')
+		count += ft_putnbr_base(va_arg(ap, int), "0123456789abcdef");
+	else if (specifier == 'X')
+		count += ft_putnbr_base(va_arg(ap, int), "0123456789ABCDEF");
+	else if (specifier == '%')
+		count += ft_putchar('%');
 	return count;
 }
 
