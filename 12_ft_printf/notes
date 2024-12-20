@@ -1,1 +1,2 @@
-cc -o yourprog yourprog.c libstatic.a
+cc -o yourprog yourprog.c libftprintf.a
+https://github.com/Tripouille/printfTester

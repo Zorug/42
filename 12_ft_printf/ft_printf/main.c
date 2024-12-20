@@ -2,7 +2,7 @@
 
 int main()
 {
-/*	int i;
+	int i;
 
 	i = ft_printf("FT: Este é %c tes%ce de char\n", '1', 'T');
 	printf("sizeofprintf: %d\n",i);
@@ -24,12 +24,12 @@ int main()
 	int x = 42;
 	int *ptr = &x;
 
-	i = ft_printf("FT: O endereço de x é: %p\n", (void *)ptr);
-	printf("sizeofprintf: %d\n",i);
-	i = printf("PF: O endereço de x é: %p\n", (void *)ptr);
-	printf("sizeofprintf: %d\n",i);
+	int *ptro = NULL;
 
-	printf("-----------------------------\n");
+	i = ft_printf("FT: O endereço de x é: %p\n", (void *)ptro);
+	printf("sizeofprintf: %d\n",i);
+	i = printf("PF: O endereço de x é: %p\n", (void *)ptro);
+	printf("sizeofprintf: %d\n",i);
 
 	int d = -10;
 	unsigned int ui= 20;
@@ -66,7 +66,7 @@ int main()
 	i = ft_printf("FT: percentual: %%\n");
 	printf("sizeofprintf: %d\n",i);
 	i = printf("PF: percentual: %%\n");
-	printf("sizeofprintf: %d\n",i);*/
+	printf("sizeofprintf: %d\n",i);
 
 	    // Character
     ft_printf("FT: Char: %c\n", 'A');
@@ -77,7 +77,6 @@ int main()
     printf("PF: String: %s\n", "Hello");
 
     // Pointer
-    int x = 42;
     ft_printf("FT: Pointer: %p\n", &x);
     printf("PF: Pointer: %p\n", &x);
 
@@ -89,10 +88,6 @@ int main()
     ft_printf("FT: Unsigned: %u\n", 123);
     printf("PF: Unsigned: %u\n", 123);
 
-    // Hexadecimal
-    ft_printf("FT: Hexadecimal: %x\n", 255);
-    printf("PF: Hexadecimal: %x\n", 255);
-
     ft_printf("FT: HEXADECIMAL: %X\n", 255);
     printf("PF: HEXADECIMAL: %X\n", 255);
 
@@ -101,4 +96,6 @@ int main()
     printf("PF: Percent: %%\n");
 
     return 0;
+
+
 }

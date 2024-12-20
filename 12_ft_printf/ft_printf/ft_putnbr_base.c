@@ -1,11 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/20 17:51:29 by cgross-s          #+#    #+#             */
+/*   Updated: 2024/12/20 17:51:31 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-/*int	ft_putnbr_base(size_t n, char *base_to)
-{
-	int		count;
-	size_t	base_len;*/
-
-//int	ft_putnbr_base(unsigned int n, char *base_to)
 int	ft_putnbr_base(unsigned long n, char *base_to)
 {
 	int				count;
