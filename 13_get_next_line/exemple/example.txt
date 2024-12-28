@@ -1,0 +1,5 @@
+Hello, this is a test file.
+Each line has some text.
+This file is for testing purposes.
+Make sure to read all lines correctly.
+Good luck with your project!
