@@ -41,6 +41,7 @@
 
 int main() {
     int fd = open("file.txt", O_RDONLY);
+    int	line_number = 1;
     if (fd < 0) {
         perror("Erro ao abrir o arquivo");
         return 1;
@@ -48,6 +49,7 @@ int main() {
 
     char *line;
     while ((line = get_next_line(fd)) != NULL) {
+    	printf("Linha %d: ", line_number++);
         printf("%s", line);
         free(line);
     }
