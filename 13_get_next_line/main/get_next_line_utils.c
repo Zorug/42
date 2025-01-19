@@ -12,41 +12,64 @@
 
 #include "get_next_line.h"
 
-/**
- * The function ft_strchr searches for a specific character in a string and 
- * returns a pointer to the first occurrence of that character.
- * 
- * @param str A pointer to the string in which to search for the character.
- * 
- * @param c The parameter "c" is the character that we are searching for in the 
- * string "str".
- * 
- * @return The function `ft_strchr` returns a pointer to the first occurrence 
- * of the character `c` in the string `str`. If the character is found, the 
- * function returns a pointer to that character. If the character is not found, 
- * the function returns NULL.
- */
+/* The  strchr()  function  returns a pointer to the FIRST 
+occurrence of the character c in the string s.
+Here  "character" means "byte"; these functions do not work 
+with wide or multibyte characters.*/
+char	*ft_strchr(const char *s, int c)
+{
+	if (!s)
+		return (NULL);
+	c = (unsigned char)c;
+	while (*s)
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
 
-//------------------
+/*DESCRIPTION
+	   The  strlen() function calculates the length of the string pointed to
+	   by s, excluding the terminating null byte ('\0').*/
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-/**
- * The function ft_strlen calculates the length of a string by iterating 
- * through each character until it reaches the null terminator.
- * 
- * @param str The parameter "str" is a pointer to a character array (string).
- * 
- * @return the length of the string `str` as a `size_t` value.
- */
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-//------------------
+/*Allocates (with malloc(3)) and returns a new
+string, which is the result of the concatenation
+of ’s1’ and ’s2’.
+*/
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ptr;
+	int		i;
+	int		j;
 
-/**
- * The function `ft_strjoin` concatenates two strings and returns a new string.
- * 
- * @param s1 The parameter `s1` is a pointer to a character array, which 
- * represents the first string to be joined.
- * 
- * @param s2 s2 is a pointer to a constant character string.
- * 
- * @return a pointer to a newly allocated string that is the result of concatenating s1 and s2.
- */
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
+	ptr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		ptr[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		ptr[i + j] = s2[j];
+	ptr[i + j] = '\0';
+	return (ptr);
+}

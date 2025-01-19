@@ -10,3 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 16
+
+# endif
+
+/*functions*/
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+
+#endif
