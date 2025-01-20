@@ -145,28 +145,58 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main()
+/*int main(void)
 {
-	int		fd;
-	char	*str;
+    int fd1, fd2, fd3;
+    char *line;
 
-	fd = open("test.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Erro opening the file");
-		return (1);
-	}
-	str = get_next_line(fd);
-	while(str != NULL)
-	{
-		printf("%s", str);
-		free (str);
-		str = get_next_line(fd);
-	}
-	close (fd);
-	return (0);
-}
-*/
+    // Open multiple files
+    fd1 = open("file1.txt", O_RDONLY);
+    fd2 = open("file2.txt", O_RDONLY);
+    fd3 = open("file3.txt", O_RDONLY);
+
+    if (fd1 < 0 || fd2 < 0 || fd3 < 0)
+    {
+        perror("Error opening files");
+        return (1);
+    }
+
+    // Read lines from all file descriptors
+    while (1)
+    {
+        line = get_next_line(fd1);
+        if (line)
+        {
+            printf("File1: %s", line);
+            free(line);
+        }
+
+        line = get_next_line(fd2);
+        if (line)
+        {
+            printf("File2: %s", line);
+            free(line);
+        }
+
+        line = get_next_line(fd3);
+        if (line)
+        {
+            printf("File3: %s", line);
+            free(line);
+        }
+
+        // Exit the loop if all files reach EOF
+        if (!line)
+            break;
+    }
+
+    // Close the files
+    close(fd1);
+    close(fd2);
+    close(fd3);
+
+    return 0;
+}*/
 /*
 cc -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 */
