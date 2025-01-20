@@ -96,8 +96,7 @@ static char	*clean_stash(char *stash)
 	size_t	j;
 	char	*new_stash;
 
-	if (!stash[i])
-		free(stash);
+	if (!stash)
 		return (NULL);
 	i = 0;
 	while (stash[i] != '\0' && stash[i] != '\n')
