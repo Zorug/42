@@ -69,7 +69,7 @@ static char *clean_stash(char *stash)
 		free(stash);
 		return (NULL);
 	}
-	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1))
+	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
 	i++;
 	while (stash[i] != '\0')
 	{
@@ -87,7 +87,7 @@ char *get_next_line(int fd)
 	static char	*stash[10000];
 	char 		*line;
 
-	if (fd < 0 || BUFFERSIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash[fd] = read_and_stash(fd, stash[fd]);
 	if (!stash)
@@ -103,7 +103,7 @@ int main(void)
 	int fd;
 	char *str;
 
-	fd = open("test.txt", 0_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	str = get_next_line(fd);
 	while (str != NULL)
 	{

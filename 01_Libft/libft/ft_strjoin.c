@@ -16,27 +16,29 @@ of ’s1’ and ’s2’.
 */
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	char	*ptr;
-	int		i;
-	int		j;
+	char	*new_string;
+	size_t	i;
+	size_t	j;
 
 	if (!s1)
-		s1 = "";
-	if (!s2)
-		s2 = "";
-	ptr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (ptr == NULL)
+	{
+		s1 = malloc(sizeof(char) * 1);
+		s1[0] = '\0';
+	}
+	new_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new_string)
 		return (NULL);
 	i = -1;
 	while (s1[++i])
-		ptr[i] = s1[i];
+		new_string[i] = s1[i];
 	j = -1;
 	while (s2[++j])
-		ptr[i + j] = s2[j];
-	ptr[i + j] = '\0';
-	return (ptr);
+		new_string[i + j] = s2[j];
+	free(s1);
+	new_string[i + j] = '\0';
+	return (new_string);
 }
 
 /*

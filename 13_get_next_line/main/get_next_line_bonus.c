@@ -96,8 +96,9 @@ static char	*clean_stash(char *stash)
 	size_t	j;
 	char	*new_stash;
 
+	if (!stash)
+		return (NULL);
 	i = 0;
-	j = 0;
 	while (stash[i] != '\0' && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\0')
@@ -106,13 +107,12 @@ static char	*clean_stash(char *stash)
 		return (NULL);
 	}
 	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
+	if (!new_stash)
+		return (NULL);
 	i++;
-	while (stash[i] != '\0')
-	{
-		new_stash[j] = stash[i];
-		j++;
-		i++;
-	}
+	j = 0;
+	while (stash[i])
+		new_stash[j++] = stash[i++];
 	new_stash[j] = '\0';
 	free(stash);
 	return (new_stash);
@@ -196,7 +196,27 @@ char	*get_next_line(int fd)
     close(fd3);
 
     return 0;
-}*/
+}
+*/
+
+int main(void)
+{
+	int fd;
+	char *str;
+
+	fd = open("test.txt", O_RDONLY);
+	str = get_next_line(fd);
+	while (str != NULL)
+	{
+		printf("%s", str);
+		free(str);
+		str = get_next_line(fd);
+	}
+	//printf("%s", str);
+	close(fd);
+	return (0);
+}
+
 /*
 cc -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 */
