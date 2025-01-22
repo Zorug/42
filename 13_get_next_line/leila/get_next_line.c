@@ -98,7 +98,7 @@ char *get_next_line(int fd)
 
 }
 
-int main(void)
+/*int main(void)
 {
 	int fd;
 	char *str;
@@ -114,4 +114,4 @@ int main(void)
 	//printf("%s", str);
 	close(fd);
 	return (0);
-}
+}*/

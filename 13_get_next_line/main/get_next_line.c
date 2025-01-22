@@ -145,7 +145,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main()
+/*int	main()
 {
 	int		fd;
 	char	*str;
@@ -163,7 +163,7 @@ int	main()
     }
 	close (fd);
 	return (0);
-}
+}*/
 /*
 cc -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 */
