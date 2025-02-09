@@ -9,6 +9,7 @@ int handle_close(void *param)
 
 void make_mandelbrot(t_data data)
 {
+    mlx_clear_window(data.mlx, data.win); //limpa a janela antes de redesenhar
     t_complex c;
     t_complex t; //temporary for zoom
 
@@ -43,15 +44,18 @@ int handle_mouse(int button, int x, int y, t_data *data)
 {
     if (button == 4) // scroll para cima (zoom in)
     {
-        data->zoom *= 1.1;
+        //data->zoom *= 1.1;
+        data->zoom *= 20;
         printf("Zoom in: %.2f\n", data->zoom);
     }
     else if (button == 5) //scroll para baixo (zoom out)
     {
-        data->zoom /= 1.1;
+        //data->zoom /= 1.1;
+        data->zoom /= 20;
         printf("Zoom out: %.2f\n", data->zoom);
     }
     make_mandelbrot(*data);
+    make_grid(*data);
 
     return(0);
 }
