@@ -1,5 +1,5 @@
-#include "testlib.h"
 #include "minilibx-linux/mlx.h"
+#include <math.h>
 
 void make_circle (int win_size, int ray, void *mlx_ptr, void *win_ptr)
 {
@@ -59,5 +59,5 @@ int main(void)
 }
 
 /*
-cc teste2.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
+cc teste0.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
 */
