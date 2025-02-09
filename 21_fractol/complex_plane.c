@@ -8,19 +8,14 @@ bool is_mandelbrot(t_complex c)
     z.real = 0;
     z.i = 0;
 
-    //c.real = c.real/scale;
-    //c.i = c.i/scale;
-
     for (int i = 0; i < 42; ++i)
     {
-        //General formula
-        // z = z² + c
+        //General formula: z = z² + c
         tmp_real = (z.real * z.real) - (z.i * z.i);
         z.i = 2 * z.real * z.i;
         z.real = tmp_real;
 
-        //Adding the c value
-        z.real += c.real;
+        z.real += c.real; //Adding the c value
         z.i += c.i;
 
         //printf ("iteration n -> %d\treal %.2f\timaginary %.2f\n", i, z.real, z.i);
