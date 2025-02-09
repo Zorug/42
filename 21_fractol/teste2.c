@@ -54,7 +54,10 @@ int main(void)
 	//mlx_pixel_put(mlx_ptr, win_ptr, (250), (250), 0xFFFFFF);
 	//mlx_pixel_put(mlx_ptr, win_ptr, (150), (150), 0xFFCC00);
 	//mlx_key_hook(win_ptr, deal_key, (void *)0);
+
+
 	mlx_loop(mlx_ptr);
+
 	return (0);
 }
 

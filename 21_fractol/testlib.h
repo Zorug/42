@@ -14,6 +14,6 @@ typedef struct s_complex
     double i;
 } t_complex;
 
-bool is_mandelbrot(t_complex z, t_complex c);
+bool is_mandelbrot(t_complex c);
 
 # endif
