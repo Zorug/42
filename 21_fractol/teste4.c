@@ -44,14 +44,12 @@ int handle_mouse(int button, int x, int y, t_data *data)
 {
     if (button == 4) // scroll para cima (zoom in)
     {
-        //data->zoom *= 1.1;
-        data->zoom *= 20;
+        data->zoom *= 2;
         printf("Zoom in: %.2f\n", data->zoom);
     }
     else if (button == 5) //scroll para baixo (zoom out)
     {
-        //data->zoom /= 1.1;
-        data->zoom /= 20;
+        data->zoom /= 2;
         printf("Zoom out: %.2f\n", data->zoom);
     }
     make_mandelbrot(*data);
@@ -74,7 +72,7 @@ int main(void)
 	make_grid(data);
     mlx_hook(data.win, 17, 0, handle_close, NULL); //fecha a janela
 
-    mlx_hook(data.win, 4, 0, handle_mouse, &data);
+    mlx_mouse_hook(data.win, handle_mouse, &data);
 
 	mlx_loop(data.mlx);
 	return (0);
