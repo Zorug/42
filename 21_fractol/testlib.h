@@ -22,6 +22,7 @@ typedef struct s_data
     int y_size; //screen size
 } t_data;
 
-bool is_mandelbrot(t_complex c);
+bool is_mandelbrot(t_complex c, t_data data);
+bool is_julia(t_complex z, t_data data);
 
 # endif
