@@ -12,28 +12,35 @@ void make_julia(t_data data)
     mlx_clear_window(data.mlx, data.win); //limpa a janela antes de redesenhar
     t_complex c;
 
-    int x_repos = data.x_size/2;
-    int y_repos = data.y_size/2;
-
-    for (c.i = 0 - y_repos; c.i <= data.y_size - y_repos; c.i++)
-        for (c.real = 0 - x_repos; c.real <= data.x_size - x_repos; c.real++)
+    for (c.i = 0 - data.y_repos; c.i <= data.y_size - data.y_repos; c.i++)
+        for (c.real = 0 - data.x_repos; c.real <= data.x_size - data.x_repos; c.real++)
 		{
-            if(is_julia(c, data))
-                mlx_pixel_put(data.mlx, data.win, c.real+x_repos, c.i+y_repos, 0xFFFFFF);
+            /*if(is_julia(c, data))
+            {
+                mlx_pixel_put(data.mlx, data.win, c.real+data.x_repos, c.i+data.y_repos, 0xFFFFFF);
+                //printf("%d\n", data.n_iterations);
+            }*/
+            //if(is_julia(c, data))
+            data.n_iterations = is_julia(c, data);
+            int color = get_color(data.n_iterations, data.max_iterations);
+            mlx_pixel_put(data.mlx, data.win, c.real + data.x_repos, c.i + data.y_repos, color);
+            /*{
+                mlx_pixel_put(data.mlx, data.win, c.real+data.x_repos, c.i+data.y_repos, 0xFFFFFF);
+                //printf("%d\n", data.n_iterations);
+            }*/
+            //printf("%d\n", data.n_iterations);
 		}
 }
 
 void make_grid (t_data data)
 {
 	int x, y;
-    int x_repos = data.x_size/2;
-    int y_repos = data.y_size/2;
 
-    for (y = 0 - y_repos; y <= data.y_size - y_repos; y++)
-        for (x = 0 - x_repos; x <= data.x_size - x_repos; x++)
+    for (y = 0 - data.y_repos; y <= data.y_size - data.y_repos; y++)
+        for (x = 0 - data.x_repos; x <= data.x_size - data.x_repos; x++)
 		{
 			if(y == 0 || x == 0)
-                mlx_pixel_put(data.mlx, data.win, x+x_repos, y+y_repos, 0xFF0000);
+                mlx_pixel_put(data.mlx, data.win, x+data.x_repos, y+data.y_repos, 0xFF0000);
 		}
 }
 
@@ -71,9 +78,12 @@ int main(void)
 
     data.x_size = 800;
     data.y_size = 600;
+    data.x_repos = data.x_size/2;
+    data.y_repos = data.y_size/2;
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.x_size, data.y_size, "Fractol 42");
 	data.zoom = 300.0;
+    data.max_iterations = 42;
 
 	make_julia(data);
 	make_grid(data);
@@ -87,5 +97,5 @@ int main(void)
 
 }
 /*
-cc teste_julia.c complex_plane.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
+cc teste_julia.c complex_plane.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol_jul
 */
