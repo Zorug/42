@@ -30,6 +30,8 @@ typedef struct s_data
     int y_size; //screen size
     int x_repos; //screen size
     int y_repos; //screen size
+    int x_center;
+    int y_center;
     int max_iterations;
     int n_iterations; //iterations to scape
 

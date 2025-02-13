@@ -28,6 +28,8 @@ void make_julia(t_data data)
 		}
     //show window
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+
+    //printf("repos: x = %d, y = %d\n", data.x_repos, data.y_repos);
 }
 
 void make_mandelbrot(t_data data)
@@ -51,6 +53,8 @@ void make_mandelbrot(t_data data)
 		}
     //show window
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+
+    //printf("repos: x = %d, y = %d\n", data.x_repos, data.y_repos);
 }
 
 void make_grid (t_data data)
@@ -75,27 +79,37 @@ void center_reposition(t_data *data)
     //else if (x < data->x_repos)
     //data->x_repos = 0;
     //data->y_repos = 0;
-    data->x_repos = data->x_repos + (data->x_repos - x);
-    data->y_repos = data->y_repos + (data->y_repos - y);
+
+    data->x_repos = data->x_repos - (x - data->x_repos);//zoom in working
+    data->y_repos = data->y_repos - (y - data->y_repos);
+
+    //data->x_repos = (data->x_center - (x - data->x_repos));
+    //data->y_repos = (data->y_center - (y - data->y_repos));
+    //printf("repos inside function: x = %d, y = %d\n", data->x_repos, data->y_repos);
+
+    //data->x_repos = x;//posiciona o eixo no ponto do mouse
+    //data->y_repos = y;
     
 }
 
 int handle_mouse(int button, int x, int y, t_data *data)
 {
-    if (button == 4) // scroll para cima (zoom in)
+    int x_buffer = data->x_repos, y_buffer = data->y_repos;
+
+    if (button == 5) // scroll para cima (zoom in)
     {
-        //data->zoom *= 2;
-        printf("Zoom in: %.2f\n", data->zoom);
+        data->zoom *= 0.5;
+        printf("Zoom out: %.2f\n", data->zoom);
         //mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
         //printf("Mouse pos: X=%d, Y=%d\n", x, y);
         //data->x_repos = data->x_size/2 - x;
         //data->y_repos = data->y_size/2 - y;
         center_reposition(data);
     }
-    else if (button == 5) //scroll para baixo (zoom out)
+    else if (button == 4) //scroll para baixo (zoom out)
     {
-        //data->zoom /= 2;
-        printf("Zoom out: %.2f\n", data->zoom);
+        data->zoom /= 0.5;
+        printf("Zoom in: %.2f\n", data->zoom);
         //mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
         //printf("Mouse pos: X=%d, Y=%d\n", x, y);
         //data->x_repos = data->x_size/2 - x;
@@ -106,8 +120,10 @@ int handle_mouse(int button, int x, int y, t_data *data)
         make_julia(*data);
     else if (data->set == 'M')
         make_mandelbrot(*data);
-    //make_julia(*data);
     make_grid(*data);
+
+    //data->x_repos = data->x_repos + x_buffer;
+    //data->y_repos = data->y_repos + y_buffer;
 
     return(0);
 }
@@ -121,6 +137,16 @@ int handle_keypress(int keycode, void *param)
     }
     return (0);
 }
+
+/*void set_up(t_data data)
+{
+    data.x_size = 1500;
+    data.y_size = 1000;
+    data.x_repos = data.x_size/2;
+    data.y_repos = data.y_size/2;
+    data.zoom = 300.0;
+    data.max_iterations = 42;
+}*/
 
 int main(void)
 {
@@ -142,10 +168,14 @@ int main(void)
         return (1);
     }
 
-    data.x_size = 1500;
-    data.y_size = 1000;
-    data.x_repos = data.x_size/2;
-    data.y_repos = data.y_size/2;
+    //set_up(data);
+
+    data.x_size = 800;
+    data.y_size = 600;
+    data.x_center = data.x_size/2;
+    data.y_center = data.y_size/2;
+    data.x_repos = data.x_center;
+    data.y_repos = data.y_center;
 
     data.zoom = 300.0;
     data.max_iterations = 42;
@@ -168,5 +198,5 @@ int main(void)
 
 }
 /*
-cc teste_mix.c complex_plane.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol_mix
+cc teste_mix2.c complex_plane.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol_mix
 */
