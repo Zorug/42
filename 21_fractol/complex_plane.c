@@ -8,8 +8,10 @@ int is_mandelbrot(t_complex c, t_data data)
     z.real = 0;
     z.i = 0;
 
-    c.real /= data.zoom; //zooming
-    c.i /= data.zoom;
+    //c.real /= data.zoom; //zooming
+    //c.i /= data.zoom;
+    c.real = (c.real - data.x_size / 2) / data.zoom + data.offset_x;
+    c.i = (c.i - data.y_size / 2) / data.zoom + data.offset_y;
 
     for (int i = 0; i <= data.max_iterations; ++i)
     {
@@ -37,8 +39,10 @@ int is_julia(t_complex z, t_data data)
     c.real = -0.8;
     c.i = 0.156;
 
-    z.real /= data.zoom; //zooming
-    z.i /= data.zoom;
+    //z.real /= data.zoom; //zooming
+    //z.i /= data.zoom;
+    z.real = (z.real - data.x_size / 2) / data.zoom + data.offset_x;
+    z.i = (z.i - data.y_size / 2) / data.zoom + data.offset_y;
 
     for (int i = 0; i <= data.max_iterations; ++i)
     {
