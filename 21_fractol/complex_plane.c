@@ -57,31 +57,6 @@ int is_julia(t_complex z, t_data data)
     return data.max_iterations;
 }
 
-int get_color(int iterations, int max_iterations)
-{
-    if (iterations == max_iterations)
-        return 0x000000;
-    else
-    {
-        /*int r = (iterations * 255) / max_iterations;
-        int g = (iterations * 255) / max_iterations;
-        int b = (iterations * 255) / max_iterations;*/
-        int r = (iterations * 255) / max_iterations;
-        int g = (iterations * 128) / max_iterations;
-        int b = (iterations * 64) / max_iterations;
-        return (r << 16) | (g << 8) | b; //combina rgb em um valor de cor
-    }
-}
-
-//function to put a pixel in the image
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-    char *dst;
-
-    dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-    *(unsigned int *)dst = color;
-}
-
 /*
 cc teste2.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
 */

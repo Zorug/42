@@ -9,12 +9,12 @@ int handle_close(void *param)
 
 void make_julia(t_data data)
 {
+    t_img jul;
+
     mlx_clear_window(data.mlx, data.win); //limpa a janela antes de redesenhar
 
-    //creating new image
-    data.img = mlx_new_image(data.mlx, data.x_size, data.y_size);
-    //getting pixels adress
-    data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_len, &data.endian);
+    jul.img = mlx_new_image(data.mlx, data.x_size, data.y_size);//creating image
+    jul.addr = mlx_get_data_addr(jul.img, &jul.bpp, &jul.line_len, &jul.endian);//getting pixels adress
 
     t_complex c;
 
@@ -24,22 +24,22 @@ void make_julia(t_data data)
             data.n_iterations = is_julia(c, data);
             int color = get_color(data.n_iterations, data.max_iterations);
             //mlx_pixel_put(data.mlx, data.win, c.real + data.x_repos, c.i + data.y_repos, color);
-            my_mlx_pixel_put(&data, c.real + data.x_repos, c.i + data.y_repos, color);
+            my_mlx_pixel_put(&jul, c.real + data.x_repos, c.i + data.y_repos, color);
 		}
     //show window
-    mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+    mlx_put_image_to_window(data.mlx, data.win, jul.img, 0, 0);
 
     //printf("repos: x = %d, y = %d\n", data.x_repos, data.y_repos);
 }
 
 void make_mandelbrot(t_data data)
 {
+    t_img man;
+    
     mlx_clear_window(data.mlx, data.win); //limpa a janela antes de redesenhar
 
-    //creating new image
-    data.img = mlx_new_image(data.mlx, data.x_size, data.y_size);
-    //getting pixels adress
-    data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_len, &data.endian);
+    man.img = mlx_new_image(data.mlx, data.x_size, data.y_size); //creating new image
+    man.addr = mlx_get_data_addr(man.img, &man.bpp, &man.line_len, &man.endian); //getting pixels adress
 
     t_complex c;
 
@@ -49,10 +49,10 @@ void make_mandelbrot(t_data data)
             data.n_iterations = is_mandelbrot(c, data);
             int color = get_color(data.n_iterations, data.max_iterations);
             //mlx_pixel_put(data.mlx, data.win, c.real + data.x_repos, c.i + data.y_repos, color);
-            my_mlx_pixel_put(&data, c.real + data.x_repos, c.i + data.y_repos, color);
+            my_mlx_pixel_put(&man, c.real + data.x_repos, c.i + data.y_repos, color);
 		}
     //show window
-    mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+    mlx_put_image_to_window(data.mlx, data.win, man.img, 0, 0);
 
     //printf("repos: x = %d, y = %d\n", data.x_repos, data.y_repos);
 }
@@ -108,7 +108,7 @@ int handle_mouse(int button, int x, int y, t_data *data)
     }
     else if (button == 4) //scroll para baixo (zoom out)
     {
-        data->zoom /= 0.5;
+        data->zoom *= 1.5;
         printf("Zoom in: %.2f\n", data->zoom);
         //mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
         //printf("Mouse pos: X=%d, Y=%d\n", x, y);
@@ -122,9 +122,6 @@ int handle_mouse(int button, int x, int y, t_data *data)
         make_mandelbrot(*data);
     make_grid(*data);
 
-    //data->x_repos = data->x_repos + x_buffer;
-    //data->y_repos = data->y_repos + y_buffer;
-
     return(0);
 }
 
@@ -137,16 +134,6 @@ int handle_keypress(int keycode, void *param)
     }
     return (0);
 }
-
-/*void set_up(t_data data)
-{
-    data.x_size = 1500;
-    data.y_size = 1000;
-    data.x_repos = data.x_size/2;
-    data.y_repos = data.y_size/2;
-    data.zoom = 300.0;
-    data.max_iterations = 42;
-}*/
 
 int main(void)
 {
@@ -168,20 +155,7 @@ int main(void)
         return (1);
     }
 
-    //set_up(data);
-
-    data.x_size = 800;
-    data.y_size = 600;
-    data.x_center = data.x_size/2;
-    data.y_center = data.y_size/2;
-    data.x_repos = data.x_center;
-    data.y_repos = data.y_center;
-
-    data.zoom = 300.0;
-    data.max_iterations = 42;
-
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, data.x_size, data.y_size, "Fractol 42");
+    data_init(&data);
 
 	if (data.set == 'J')
         make_julia(data);
@@ -198,5 +172,5 @@ int main(void)
 
 }
 /*
-cc teste_mix2.c complex_plane.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol_mix
+cc teste_mix2.c complex_plane.c utils.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol_mix
 */
