@@ -7,23 +7,25 @@ void data_init(t_data *data)
     data->x_center = data->x_size / 2;
     data->y_center = data->y_size / 2;
     data->zoom = 250.0;
-    data->max_iterations = 42;
+    data->max_iterations = 70;
     data->mlx = mlx_init();
     data->win = mlx_new_window(data->mlx, data->x_size, data->y_size, "Fractol 42");
-    data->offset_x = 400;  // Deslocamento horizontal no plano complexo
-    data->offset_y = 300;   // Deslocamento vertical no plano complexo
+    data->offset_x = 0.0;  // Deslocamento horizontal no plano complexo
+    //data->offset_x = -0.5;  // Deslocamento horizontal no plano complexo
+    //data->offset_y = 300;   // Deslocamento vertical no plano complexo
+    data->offset_y = 0.0;   // Deslocamento vertical no plano complexo
 }
 
-void init_mlx(t_data *data)
+/*void init_mlx(t_data *data)
 {
     data->mlx = mlx_init();
     data->win = mlx_new_window(data->mlx, data->x_size, data->y_size, "Fract-ol");
     data->img = mlx_new_image(data->mlx, data->x_size, data->y_size);
     data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, 
         &data->endian);
-}
+}*/
 
-void init_fractal(t_data *data)
+/*void init_fractal(t_data *data)
 {
     data->x = 0;
     data->y = 0;
@@ -32,7 +34,7 @@ void init_fractal(t_data *data)
     data->offset_x = -1.21;
     data->offset_y = -1.21;
     data->max_iterations = 42;
-}
+}*/
 
 int get_color(int iterations, int max_iterations)
 {

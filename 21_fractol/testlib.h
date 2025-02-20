@@ -14,14 +14,62 @@ typedef struct s_complex
     double i; // y
 } t_complex;
 
-typedef struct s_img
+typedef struct s_data
+{
+    void *mlx;
+    void *win;
+    void *img;
+    void *addr; //pointer to image
+    int bpp; //bits per pixel
+    int line_len; //line size
+    int endian;
+
+    int x_size;
+    int y_size;
+    //int x_repos;  // 🔥 Adicionado para posicionamento na tela
+    //int y_repos;  // 🔥 Adicionado
+    int x_center; // 🔥 Adicionado
+    int y_center; // 🔥 Adicionado
+    int n_iterations;
+    char set;
+
+    int x;
+    int y;
+    double zx;
+    double zy;
+    double cx;
+    double cy;
+    int color;
+    double offset_x;
+    double offset_y;
+    double zoom;
+    char *name;
+    int max_iterations;
+
+} t_data;
+
+int is_mandelbrot(t_complex c, t_data data);
+int is_julia(t_complex z, t_data data);
+int get_color(int iterations, int max_iterations);
+void my_mlx_pixel_put(t_data *data, int x, int y, int color);
+//void my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+//void get_input(t_data data);
+void get_input(t_data *data);
+void data_init(t_data *data);
+
+void put_color_to_pixel(t_data data, int x, int y, int color);
+void init_fractal(t_data *data);
+void init_mlx(t_data *data);
+
+/*typedef struct s_img
 {
     void *img;
     char *addr;
     int bpp;
     int line_len;
     int endian;
-} t_img;
+} t_img;*/
 
 /*typedef struct s_data
 {
@@ -44,55 +92,5 @@ typedef struct s_img
 
     char set; //set type
 } t_data;*/
-
-typedef struct s_data
-{
-    void *mlx;
-    void *win;
-    void *img;
-    void *addr; //pointer to image
-    int bpp; //bits per pixel
-    int line_len; //line size
-    int endian;
-
-    int x_size;
-    int y_size;
-    int x_repos;  // 🔥 Adicionado para posicionamento na tela
-    int y_repos;  // 🔥 Adicionado
-    int x_center; // 🔥 Adicionado
-    int y_center; // 🔥 Adicionado
-    int n_iterations;
-    char set;
-
-    int x;
-    int y;
-    double zx;
-    double zy;
-    double cx;
-    double cy;
-    int color;
-    double offset_x;
-    double offset_y;
-    double zoom;
-    char *name;
-    int max_iterations;
-
-} t_data;
-
-
-
-int is_mandelbrot(t_complex c, t_data data);
-int is_julia(t_complex z, t_data data);
-int get_color(int iterations, int max_iterations);
-void my_mlx_pixel_put(t_data *data, int x, int y, int color);
-//void my_mlx_pixel_put(t_img *img, int x, int y, int color);
-
-//void get_input(t_data data);
-void get_input(t_data *data);
-void data_init(t_data *data);
-
-void put_color_to_pixel(t_data data, int x, int y, int color);
-void init_fractal(t_data *data);
-void init_mlx(t_data *data);
 
 # endif

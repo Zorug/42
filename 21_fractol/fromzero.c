@@ -16,14 +16,26 @@ int handle_close(void *param)
     return (0);
 }
 
-void make_grid (t_data *data)
+void make_julia(t_data *data)
 {
-    for (int y = 0 - data->offset_y; y <= data->y_size - data->offset_y; y++)
-        for (int x = 0 - data->offset_x; x <= data->x_size - data->offset_x; x++)
-		{
-			if(y == 0 || x == 0)
-                mlx_pixel_put(data->mlx, data->win, x+data->offset_x, y+data->offset_y, 0xFF0000);
-		}
+    mlx_clear_window(data->mlx, data->win);
+    data->img = mlx_new_image(data->mlx, data->x_size, data->y_size);
+    data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
+
+    t_complex z;
+    
+    for (int y = 0; y <= data->y_size; y++) {
+        for (int x = 0; x <= data->x_size; x++)
+        {
+            z.real = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
+            z.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
+
+            data->n_iterations = is_julia(z, *data);
+            int color = get_color(data->n_iterations, data->max_iterations);
+            my_mlx_pixel_put(data, x, y, color);
+        }
+    }
+    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
 
 void make_mandelbrot(t_data *data) {
@@ -33,8 +45,8 @@ void make_mandelbrot(t_data *data) {
 
     t_complex c;
 
-    for (int y = 0; y < data->y_size; y++) {
-        for (int x = 0; x < data->x_size; x++) {
+    for (int y = 0; y <= data->y_size; y++) {
+        for (int x = 0; x <= data->x_size; x++) {
             c.real = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
             c.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
@@ -65,8 +77,10 @@ int handle_mouse(int button, int x, int y, t_data *data) {
     data->offset_x = fractal_x_before_zoom - (double)x / data->zoom + (double)data->x_size / (2.0 * data->zoom);
     data->offset_y = fractal_y_before_zoom - (double)y / data->zoom + (double)data->y_size / (2.0 * data->zoom);
 
-    make_mandelbrot(data);  // Redraw with the new zoom and offset
-    make_grid(data);
+    if (data->set == 'M')
+        make_mandelbrot(data);
+    else if (data->set == 'J')
+        make_julia(data);
 
     return 0;
 }
@@ -77,9 +91,13 @@ int main()
 
     data_init(&data);
 
-    make_mandelbrot(&data);
+    get_input(&data);
 
-    make_grid(&data);
+    if (data.set == 'M')
+        make_mandelbrot(&data);
+    else if (data.set == 'J')
+        make_julia(&data);
+
 
     mlx_hook(data.win, 17, 0, handle_close, NULL); //fecha a janela x
     mlx_key_hook(data.win, handle_keypress, &data); //fechar a janela esc
