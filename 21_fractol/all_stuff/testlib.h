@@ -84,8 +84,8 @@ typedef struct s_data
 int is_mandelbrot(t_complex c, t_data data);
 int is_julia(t_complex z, t_data data);
 int get_color(int iterations, int max_iterations);
-void my_mlx_pixel_put(t_data *data, int x, int y, int color);
-//void my_mlx_pixel_put(t_img *img, int x, int y, int color);
+//void my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //void get_input(t_data data);
 void get_input(t_data *data);

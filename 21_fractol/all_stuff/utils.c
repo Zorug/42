@@ -4,14 +4,18 @@ void data_init(t_data *data)
 {
     data->x_size = 800;
     data->y_size = 600;
-    data->x_center = data->x_size / 2;
-    data->y_center = data->y_size / 2;
-    data->zoom = 250.0;
+    data->x_center = data->x_size/2;
+    data->y_center = data->y_size/2;
+    data->x_repos = data->x_center;
+    data->y_repos = data->y_center;
+    data->zoom = 300.0;
     data->max_iterations = 42;
-    data->mlx = mlx_init();
-    data->win = mlx_new_window(data->mlx, data->x_size, data->y_size, "Fractol 42");
-    data->offset_x = 400;  // Deslocamento horizontal no plano complexo
-    data->offset_y = 300;   // Deslocamento vertical no plano complexo
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, data->x_size, data->y_size, "Fractol 42");
+    //data->offset_x = -0.5;  // Para centralizar o Mandelbrot
+    //data->offset_y = 0.0;   // Ajuste para centralização vertical
+    //data->offset_x = data->x_center;  // Para centralizar o Mandelbrot
+    //data->offset_y = data->y_center;   // Ajuste para centralização vertical
 }
 
 void init_mlx(t_data *data)
@@ -51,21 +55,21 @@ int get_color(int iterations, int max_iterations)
 }
 
 //function to put a pixel in the image
-/*void my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
     char *dst;
 
     dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
     *(unsigned int *)dst = color;
-}*/
+}
 
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/*void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
     char *dst;
 
     dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
     *(unsigned int *)dst = color;
-}
+}*/
 
 void get_input(t_data *data)
 {
