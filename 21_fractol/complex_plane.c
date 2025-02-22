@@ -1,5 +1,28 @@
 #include "testlib.h"
 
+int is_burning_ship(t_complex c, t_data data)
+{
+    t_complex z;
+    double tmp_real;
+    int i;
+
+    z.real = 0;
+    z.i = 0;
+    i = 0;
+
+    while (i < data.max_iterations)
+    {
+        tmp_real = z.real * z.real - z.i * z.i + c.real;
+        z.i = fabs(2 * z.real * z.i) + c.i;  // Applying absolute value
+        z.real = fabs(tmp_real);             // Applying absolute value
+
+        if ((z.real * z.real + z.i * z.i) > 4) // Escape condition
+            return i;
+        i++;
+    }
+    return data.max_iterations;
+}
+
 int is_mandelbrot(t_complex c, t_data data)
 {
     t_complex z;
@@ -47,7 +70,6 @@ int is_julia(t_complex z, t_data data)
         if (isnan(z.real) || isnan(z.i) || isinf(z.real) || isinf(z.i))
             return i;
     }
-
     return data.max_iterations;
 }
 
