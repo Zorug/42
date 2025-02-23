@@ -124,6 +124,10 @@ int main()
 {
     t_data data;
     get_input(&data);
+
+    if (data.set == 'J')
+        julia_input(&data);
+        
     data_init(&data);
 
     draw_fractal(&data);

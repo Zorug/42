@@ -47,21 +47,52 @@ int ft_strlen(char *str)
     return (i);
 }
 
+char read_input()
+{
+    char c;
+    if (read(0, &c, 1) == -1)
+    {
+        write(1, "Error to read\n", 14);
+        exit (1);
+    }
+
+    // Consumir caractere extra '\n' se houver
+    char temp;
+    while (read(0, &temp, 1) > 0 && temp != '\n');
+    
+    return (c);
+}
+
+void julia_input(t_data *data)
+{
+    char *msg;
+    msg = "You selected Julia Set.\nSelect one of the following sets:\n";
+    write(1, msg, ft_strlen(msg));
+    data->jul_set = read_input();
+    write(1, "Digit: ", 7);
+    write(1, &data->jul_set, 1);
+    write(1, "\n", 1);
+    if(data->jul_set != '1' && data->jul_set != '2' && data->jul_set != '3')
+    {
+        write(1, "ERROR\n", 6);
+        exit (1);
+    }
+}
+
 void get_input(t_data *data)
 {
     char *message;
     message = "For Julia type J, for Mandelbroot type M, for Burning Ship type S:\n"; 
     write(1, message, ft_strlen(message));
-    //ft_printf("Teste\n");
-    if (read(0, &data->set, 1) == -1)
+    /*if (read(0, &data->set, 1) == -1)
     {
         write(1, "Error to read\n", 14);
         exit (1);
-    }
+    }*/
+    data->set = read_input();
     write(1, "Digit: ", 7);
     write(1, &data->set, 1);
     write(1, "\n", 1);
-
     if(data->set != 'J' && data->set != 'M' && data->set != 'S')
     {
         write(1, "ERROR\n", 6);

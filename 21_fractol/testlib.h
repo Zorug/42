@@ -55,7 +55,9 @@ int is_burning_ship(t_complex c, t_data data);
 int get_color(int iterations, int max_iterations);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
+char read_input();
 void get_input(t_data *data);
+void julia_input(t_data *data);
 void data_init(t_data *data);
 
 void put_color_to_pixel(t_data data, int x, int y, int color);
