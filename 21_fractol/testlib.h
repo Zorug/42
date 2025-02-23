@@ -77,5 +77,7 @@ void make_mandelbrot(t_data *data);
 int ft_strlen(char *str);
 void define_julia_set(t_data *data);
 
+void change_max_interations(t_data *data);
+
 
 # endif

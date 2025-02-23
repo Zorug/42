@@ -8,12 +8,49 @@ void data_init(t_data *data)
     data->x_center = data->x_size / 2;
     data->y_center = data->y_size / 2;
     data->zoom = 250.0;
-    data->max_iterations = 1000;
+    //data->max_iterations = 1000;
+    data->max_iterations = 20;
     data->mlx = mlx_init();
     data->win = mlx_new_window(data->mlx, data->x_size, data->y_size, "Fractol 42");
     data->offset_x = 0.0;  // Deslocamento horizontal no plano complexo
     data->offset_y = 0.0;   // Deslocamento vertical no plano complexo
     data->color = 0;
+}
+
+void change_max_interations(t_data *data)
+{
+    char *str;
+    if(data->max_iterations == 25)
+    {
+        data->max_iterations = 60;
+        str = "max_iterations = 60\n";
+    }
+    else if (data->max_iterations == 60)
+    {
+        data->max_iterations = 150;
+        str = "max_iterations = 150\n";
+    }
+    else if (data->max_iterations == 150)
+    {
+        data->max_iterations = 400;
+        str = "max_iterations = 400\n";
+    }
+    else if (data->max_iterations == 400)
+    {
+        data->max_iterations = 1000;
+        str = "max_iterations = 1000\n";
+    }
+    else if (data->max_iterations == 1000)
+    {
+        data->max_iterations = 5000;
+        str = "max_iterations = 5000\n";
+    }
+    else
+    {
+        data->max_iterations = 25;
+        str = "max_iterations = 25\n";
+    }
+    write(1, str, ft_strlen(str));
 }
 
 //int get_color(int iterations, int max_iterations)

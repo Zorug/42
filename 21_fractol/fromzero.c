@@ -95,7 +95,11 @@ int handle_mouse(int button, int x, int y, t_data *data) {
         write(1, str, ft_strlen(str));
         write(1, &c, 1);
         write(1, "\n", 1);
-    } else {
+    } 
+    else if(button == 3) { //change iteraction number
+        change_max_interations(data);
+    }
+    else {
         return 0; // Ignore other buttons
     }
 
