@@ -22,7 +22,8 @@ void make_burning_ship(t_data *data)
             z.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
             data->n_iterations = is_burning_ship(z, *data);
-            int color = get_color(data->n_iterations, data->max_iterations);
+            //int color = get_color(data->n_iterations, data->max_iterations);
+            int color = get_color(data);
             my_mlx_pixel_put(data, x, y, color);
         }
     }
@@ -44,7 +45,8 @@ void make_julia(t_data *data)
             z.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
             data->n_iterations = is_julia(z, *data);
-            int color = get_color(data->n_iterations, data->max_iterations);
+            //int color = get_color(data->n_iterations, data->max_iterations);
+            int color = get_color(data);
             my_mlx_pixel_put(data, x, y, color);
         }
     }
@@ -64,7 +66,8 @@ void make_mandelbrot(t_data *data) {
             c.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
             data->n_iterations = is_mandelbrot(c, *data);
-            int color = get_color(data->n_iterations, data->max_iterations);
+            //int color = get_color(data->n_iterations, data->max_iterations);
+            int color = get_color(data);
             my_mlx_pixel_put(data, x, y, color); 
         }
     }
@@ -78,11 +81,20 @@ int handle_mouse(int button, int x, int y, t_data *data) {
     double fractal_x_before_zoom = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
     double fractal_y_before_zoom = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
-
     if (button == 4) { // Zoom in
         data->zoom *= zoom_factor;
     } else if (button == 5) { // Zoom out
         data->zoom /= zoom_factor;
+    } else if (button == 1) { // esquerdo do mouse: mudar a cor
+        if (data->color == 5)
+            data->color = 0;
+        else
+            data->color++;
+        char c = data->color + '0';
+        char *str = "Color set: ";
+        write(1, str, ft_strlen(str));
+        write(1, &c, 1);
+        write(1, "\n", 1);
     } else {
         return 0; // Ignore other buttons
     }

@@ -54,8 +54,8 @@ int is_julia(t_complex z, t_data data)
     t_complex c;
     double tmp_real;
 
-    c.real = -0.8;
-    c.i = 0.156;
+    c.real = data.jreal;
+    c.i = data.ji;
 
     for (int i = 0; i <= data.max_iterations; ++i)
     {
