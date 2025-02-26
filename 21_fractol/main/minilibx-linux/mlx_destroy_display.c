@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 17:51:52 by cgross-s          #+#    #+#             */
-/*   Updated: 2024/12/20 17:51:53 by cgross-s         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mlx_int.h"
 
-int	ft_putstr(char *str)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	int	count;
-
-	count = 0;
-	if (!str)
-		return (ft_putstr("(null)"));
-	while (*str)
-		count += ft_putchar(*str++);
-	return (count);
+	XCloseDisplay(xvar->display);
 }

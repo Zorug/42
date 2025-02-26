@@ -1,5 +1,5 @@
-#include "testlib.h"
-//#include "libft/libft.h"
+#include "fractol.h"
+#include <math.h>
 
 void data_init(t_data *data)
 {
@@ -16,6 +16,34 @@ void data_init(t_data *data)
     data->offset_y = 0.0;   // Deslocamento vertical no plano complexo
     data->color = 0;
 }
+
+//////////////////////////////////////////////// teste leak
+void free_resources(t_data *data)
+{
+    if (!data) // verifica se data é NULL
+        return;
+//    if (data->img)
+    if (data->img != NULL)
+    {
+        mlx_destroy_image(data->mlx, data->img);
+        data->img = NULL; // Set to NULL after freeing
+    }
+    //if (data->win)
+    if (data->win != NULL) // Check if the window was created
+    {
+        mlx_destroy_window(data->mlx, data->win);
+        data->win = NULL; // Good practice: set to NULL
+    }
+    //if (data->mlx)
+    if (data->mlx != NULL) // Only free if mlx was initialized
+    {
+        mlx_destroy_display(data->mlx);
+        free(data->mlx); // 🔥 LIBERAÇÃO FINAL DO MLX
+        data->mlx = NULL; // Good practice: set to NULL
+        //free(data->mlx);
+    }
+}
+/////////////////////////////////////////////////
 
 void change_max_interations(t_data *data)
 {
@@ -206,10 +234,11 @@ void put_color_to_pixel(t_data data, int x, int y, int color)
 
 void draw_fractal(t_data *data)
 {
-    if (data->set == 'M')
+    /*if (data->set == 'M')
         make_mandelbrot(data);
     else if (data->set == 'J')
         make_julia(data);
     else if (data->set == 'S')
-        make_burning_ship(data);
+        make_burning_ship(data);*/
+    make_fractal(data);
 }

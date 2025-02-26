@@ -1,60 +1,27 @@
-#include "testlib.h"
+#include "fractol.h"
 
-int handle_close(void *param)
+int handle_close(t_data *data)
+//int handle_close(void *param)
 {
-    (void)param; // Cast to void to suppress the warning
+    //(void)param; // Cast to void to suppress the warning
+    //(void)data; // Cast to void to suppress the warning
+    if (!data) //verifica se data é NULL
+        return (0);
+
+    free_resources(data);
     exit (0);
     return (0);
 }
 
-void make_burning_ship(t_data *data)
-{
+
+void make_fractal(t_data *data) {
+
     mlx_clear_window(data->mlx, data->win);
-    data->img = mlx_new_image(data->mlx, data->x_size, data->y_size);
-    data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
-
-    t_complex z;
-    
-    for (int y = 0; y <= data->y_size; y++) {
-        for (int x = 0; x <= data->x_size; x++)
-        {
-            z.real = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
-            z.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
-
-            data->n_iterations = is_burning_ship(z, *data);
-            //int color = get_color(data->n_iterations, data->max_iterations);
-            int color = get_color(data);
-            my_mlx_pixel_put(data, x, y, color);
-        }
-    }
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-}
-
-void make_julia(t_data *data)
-{
-    mlx_clear_window(data->mlx, data->win);
-    data->img = mlx_new_image(data->mlx, data->x_size, data->y_size);
-    data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
-
-    t_complex z;
-    
-    for (int y = 0; y <= data->y_size; y++) {
-        for (int x = 0; x <= data->x_size; x++)
-        {
-            z.real = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
-            z.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
-
-            data->n_iterations = is_julia(z, *data);
-            //int color = get_color(data->n_iterations, data->max_iterations);
-            int color = get_color(data);
-            my_mlx_pixel_put(data, x, y, color);
-        }
-    }
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-}
-
-void make_mandelbrot(t_data *data) {
-    mlx_clear_window(data->mlx, data->win);
+    ///////////////
+    //if (data->img) //novo comando para limpar mem
+    if (data->img != NULL) // Check for NULL before destroying!
+        mlx_destroy_image(data->mlx, data->img);
+    //////////////
     data->img = mlx_new_image(data->mlx, data->x_size, data->y_size);
     data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
 
@@ -65,7 +32,12 @@ void make_mandelbrot(t_data *data) {
             c.real = (double)x / data->zoom - (double)data->x_size / (2.0 * data->zoom) + data->offset_x;
             c.i = (double)y / data->zoom - (double)data->y_size / (2.0 * data->zoom) + data->offset_y;
 
-            data->n_iterations = is_mandelbrot(c, *data);
+            if (data->set == 'M')
+                data->n_iterations = is_mandelbrot(c, *data);
+            else if(data->set == 'S')
+                data->n_iterations = is_burning_ship(c, *data);
+            else
+                data->n_iterations = is_julia(c, *data);
             //int color = get_color(data->n_iterations, data->max_iterations);
             int color = get_color(data);
             my_mlx_pixel_put(data, x, y, color); 
@@ -111,10 +83,11 @@ int handle_mouse(int button, int x, int y, t_data *data) {
     return 0;
 }
 
-int handle_keypress(int keycode, void *param)
+//int handle_keypress(int keycode, void *param)
+int handle_keypress(int keycode, t_data *data)
 {
 
-    t_data *data = (t_data *)param;
+    //t_data *data = (t_data *)param;
     double move_factor = 20;
 
     if (keycode == 65361) // Left arrow
@@ -128,6 +101,9 @@ int handle_keypress(int keycode, void *param)
     else if (keycode == 65307) // ESC key
     {
         mlx_destroy_window(data->mlx, data->win);
+        /////////
+        free_resources(data);
+        //////////
         exit(0);
     }
 
@@ -138,7 +114,7 @@ int handle_keypress(int keycode, void *param)
 
 int main()
 {
-    t_data data;
+    t_data data = {0}; // Inicializa todos os campos com 0 ou NULL
     get_input(&data);
 
     if (data.set == 'J')
@@ -148,13 +124,19 @@ int main()
 
     draw_fractal(&data);
 
-    mlx_hook(data.win, 17, 0, handle_close, NULL); //fecha a janela x
+    //mlx_hook(data.win, 17, 0, handle_close, NULL); //fecha a janela x
+    mlx_hook(data.win, 17, 0, handle_close, &data); // Passa o ponteiro correto
+
     mlx_key_hook(data.win, handle_keypress, &data); //fechar a janela esc
 
     mlx_mouse_hook(data.win, handle_mouse, &data);
 
     mlx_loop(data.mlx);
+
+    // Garantir que free_resources seja chamada ao sair
+    free_resources(&data);
+    return 0;
 }
 /*
-cc fromzero.c complex_plane.c utils.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
+cc fractol.c complex_plane.c utils.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
 */

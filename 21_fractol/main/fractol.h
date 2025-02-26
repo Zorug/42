@@ -1,5 +1,5 @@
-#ifndef TESTLIB_H
-# define TESTLIB_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 #include "minilibx-linux/mlx.h"
 //#include "libft/libft.h"
@@ -70,14 +70,16 @@ void init_mlx(t_data *data);
 
 void draw_fractal(t_data *data);
 
-void make_burning_ship(t_data *data);
-void make_julia(t_data *data);
-void make_mandelbrot(t_data *data);
+//void make_burning_ship(t_data *data);
+//void make_julia(t_data *data);
+//void make_mandelbrot(t_data *data);
+void make_fractal(t_data *data);
 
 int ft_strlen(char *str);
 void define_julia_set(t_data *data);
 
 void change_max_interations(t_data *data);
+void free_resources(t_data *data);
 
 
 # endif

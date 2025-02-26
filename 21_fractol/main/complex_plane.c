@@ -1,4 +1,4 @@
-#include "testlib.h"
+#include "fractol.h"
 
 int is_burning_ship(t_complex c, t_data data)
 {
