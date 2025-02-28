@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_LIB = -L minilibx-linux -lmlx -lXext -lX11 -lm
 
 # Arquivos-fonte
-SRC = fractol.c complex_plane.c utils.c
+SRC = fractol.c complex_plane.c utils.c utilt.c utilu.c color_interac.c
 
 # Arquivos-objeto (os arquivos .o gerados a partir dos .c)
 OBJ = $(SRC:.c=.o)
