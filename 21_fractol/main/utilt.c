@@ -37,7 +37,7 @@ void	define_julia_set(t_data *data)
 	}
 }
 
-void	julia_input(t_data *data)
+void	julia_input(t_data *dt)
 {
 	char	*msg0;
 	char	*msg1;
@@ -49,16 +49,16 @@ void	julia_input(t_data *data)
 	write(1, msg1, ft_strlen(msg1));
 	msg2 = "(3)\tc = -0.1 + 0.651i\n(4)\tc = -0.4 + 0.6i\n";
 	write(1, msg2, ft_strlen(msg2));
-	data->jul_set = read_input();
+	dt->jul_set = read_input();
 	write(1, "Digit: ", 7);
-	write(1, &data->jul_set, 1);
+	write(1, &dt->jul_set, 1);
 	write(1, "\n", 1);
-	if (data->jul_set < '1' && data->jul_set > '4')
+	if (dt->jul_set < '1' || dt->jul_set > '4')
 	{
 		write(1, "ERROR\n", 6);
 		exit (1);
 	}
-	define_julia_set(data);
+	define_julia_set(dt);
 }
 
 void	get_input(t_data *data)
