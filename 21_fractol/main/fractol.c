@@ -104,5 +104,6 @@ int	main(void)
 	return (0);
 }
 /*
-cc fractol.c complex_plane.c utils.c utilt.c utilu.c color_interac.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
+cc fractol.c complex_plane.c utils.c utilt.c 
+utilu.c color_interac.c -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol
 */
