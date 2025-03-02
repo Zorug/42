@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:42:18 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/02/26 21:42:19 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:32:11 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	handle_keypress(int keycode, t_data *data)
 		data->offset_y += move_factor / data->zoom;
 	else if (keycode == 65307)
 	{
-		mlx_destroy_window(data->mlx, data->win);
+		if (!data)
+			return (0);
 		free_resources(data);
 		exit(0);
 	}
