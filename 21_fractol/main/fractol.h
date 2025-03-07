@@ -80,4 +80,6 @@ void	define_julia_set(t_data *data);
 void	change_max_interations(t_data *data);
 void	free_resources(t_data *data);
 
+double	ft_atof(const char *nptr);
+
 #endif
