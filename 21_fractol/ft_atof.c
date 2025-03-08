@@ -29,10 +29,10 @@ double	ft_atof(const char *nptr)
 	return ((int_part + frac_part) * sign);
 }
 
-/*int main (int argc, char **argv)
+int main (int argc, char **argv)
 {
 	if (argc == 2)
 	{
 		printf("%f\n", ft_atof(argv[1]));
 	}
-}*/
+}

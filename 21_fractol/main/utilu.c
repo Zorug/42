@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:52:27 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/02/28 23:52:28 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:10:15 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,49 @@ double	ft_atof(const char *nptr)
 		nptr++;
 	}
 	return ((int_part + frac_part) * sign);
+}
+
+void	rl_complement(t_rdline *rl)
+{
+	rl->buffer = rl->new_buffer;
+	rl->i = 0;
+	while (rl->i < rl->bytes_read)
+	{
+		rl->buffer[rl->total_len + rl->i] = rl->temp[rl->i];
+		if (rl->temp[rl->i] == '\n')
+		{
+			rl->buffer[rl->total_len + rl->i + 1] = '\0';
+			rl->block = true;
+			return ;
+		}
+		rl->i++;
+	}
+}
+
+char	*read_line(void)
+{
+	t_rdline	rl;
+
+	rl.buffer = NULL;
+	rl.total_len = 0;
+	rl.bytes_read = read(0, rl.temp, BUFFER_SIZE);
+	rl.block = false;
+	while (rl.bytes_read > 0 && rl.block == false)
+	{
+		rl.temp[rl.bytes_read] = '\0';
+		rl.new_buffer = realloc(rl.buffer, rl.total_len + rl.bytes_read + 1);
+		if (!rl.new_buffer)
+		{
+			free(rl.buffer);
+			return (NULL);
+		}
+		rl_complement(&rl);
+		if (rl.block == false)
+		{
+			rl.total_len += rl.bytes_read;
+			rl.buffer[rl.total_len] = '\0';
+			rl.bytes_read = read(0, rl.temp, BUFFER_SIZE);
+		}
+	}
+	return (rl.buffer);
 }

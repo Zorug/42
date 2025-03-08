@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:41:47 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/02/26 21:41:49 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:41:24 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_complex
 {
@@ -54,6 +55,19 @@ typedef struct s_data
 
 }	t_data;
 
+# define BUFFER_SIZE 10
+
+typedef struct s_read_line
+{
+	char	*buffer;
+	char	temp[BUFFER_SIZE + 1];
+	char	*new_buffer;
+	int		total_len;
+	int		bytes_read;
+	int		i;
+	bool	block;
+}	t_rdline;
+
 int		is_mandelbrot(t_complex c, t_data data);
 int		is_julia(t_complex z, t_data data);
 int		is_burning_ship(t_complex c, t_data data);
@@ -62,7 +76,7 @@ int		get_color(t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 char	read_input(void);
-void	get_input(t_data *data);
+void	get_input(t_data *data, char *strarg);
 void	julia_input(t_data *data);
 void	data_init(t_data *data);
 
@@ -70,7 +84,7 @@ void	put_color_to_pixel(t_data data, int x, int y, int color);
 void	init_fractal(t_data *data);
 void	init_mlx(t_data *data);
 
-void	draw_fractal(t_data *data);
+//void	draw_fractal(t_data *data);
 
 void	make_fractal(t_data *data);
 
@@ -82,4 +96,7 @@ void	free_resources(t_data *data);
 
 double	ft_atof(const char *nptr);
 
-#endif
+char	*read_line(void);
+int	ft_strcmp(const char *s1, const char *s2);
+
+#endif 

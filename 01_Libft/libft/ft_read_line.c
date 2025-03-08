@@ -14,19 +14,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include "libft.h"
 
 #define BUFFER_SIZE 10
-
-typedef struct s_read_line
-{
-	char	*buffer;
-	char	temp[BUFFER_SIZE + 1];
-	char	*new_buffer;
-	int		total_len;
-	int		bytes_read;
-	int		i;
-	bool	block;
-}	t_rdline;
 
 void	rl_complement(t_rdline *rl)
 {
@@ -73,11 +63,10 @@ char	*read_line(void)
 	return (rl.buffer);
 }
 
-
+/*
 int ft_strcnt(char *str)
 {
 	int i;
-	i = 0;
 	while (*str)
 	{
 		str++;
@@ -108,3 +97,4 @@ int main()
 
 	return 0;
 }
+*/

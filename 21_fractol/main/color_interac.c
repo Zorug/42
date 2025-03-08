@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:13:56 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/02/28 20:13:57 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:16:58 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,21 @@ void	gc_complement_two(int *r, int *g, int *b, t_data *data)
 
 int	get_color(t_data *data)
 {
+	int		r;
+	int		g;
+	int		b;
+
+	if (data->n_iterations == data->max_iterations)
+		return (0x000000);
+	if (data->color < 3)
+		gc_complement_one(&r, &g, &b, data);
+	else
+		gc_complement_two(&r, &g, &b, data);
+	return ((r << 16) | (g << 8) | b);
+}
+
+/*int	get_color(t_data *data)
+{
 	double	t;
 	int		r;
 	int		g;
@@ -100,3 +115,4 @@ int	get_color(t_data *data)
 		gc_complement_two(&r, &g, &b, data);
 	return ((r << 16) | (g << 8) | b);
 }
+*/

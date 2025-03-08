@@ -62,11 +62,23 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 double	ft_atof(const char *nptr);
+char	*read_line(void);
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_read_line //complemento de ft_read_line.c
+{
+	char	*buffer;
+	char	temp[BUFFER_SIZE + 1];
+	char	*new_buffer;
+	int		total_len;
+	int		bytes_read;
+	int		i;
+	bool	block;
+}	t_rdline;
 
 #endif
