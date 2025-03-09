@@ -63,8 +63,14 @@ char	*read_line(void)
 	return (rl.buffer);
 }
 
-/*
-int ft_strcnt(char *str)
+void	remove_newline(char *str)
+{
+	int	len = ft_strlen(str);
+	if (len > 0 && str[len - 1] == '\n')
+		str[len -1] = '\0';
+}
+
+/*int ft_strcnt(char *str)
 {
 	int i;
 	while (*str)
@@ -84,6 +90,7 @@ int main()
 	write(1, str0, ft_strcnt(str0));
 	//char *input = read_line();
 	input = read_line();
+	remove_newline(input);
 	
 	if (input)
 	{

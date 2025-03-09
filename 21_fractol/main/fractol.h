@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:41:47 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/03/08 23:41:24 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:37:24 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	put_color_to_pixel(t_data data, int x, int y, int color);
 void	init_fractal(t_data *data);
 void	init_mlx(t_data *data);
 
-//void	draw_fractal(t_data *data);
-
 void	make_fractal(t_data *data);
 
 int		ft_strlen(char *str);
@@ -96,7 +94,9 @@ void	free_resources(t_data *data);
 
 double	ft_atof(const char *nptr);
 
+void	removenl_verifyin(char *str, int optionN, t_data *dt);
+
 char	*read_line(void);
-int	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif 

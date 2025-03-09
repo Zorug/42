@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:52:27 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/03/08 21:10:15 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:04:28 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	make_fractal(t_data *dt)
 	int			x;
 	int			y;
 
-	mlx_clear_window(dt->mlx, dt->win);
 	if (dt->img != NULL)
 		mlx_destroy_image(dt->mlx, dt->img);
 	dt->img = mlx_new_image(dt->mlx, dt->x_size, dt->y_size);
@@ -50,6 +49,7 @@ void	make_fractal(t_data *dt)
 		}
 		y++;
 	}
+	mlx_clear_window(dt->mlx, dt->win);
 	mlx_put_image_to_window(dt->mlx, dt->win, dt->img, 0, 0);
 }
 
