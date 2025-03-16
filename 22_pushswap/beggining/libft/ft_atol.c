@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 17:51:16 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/03/16 11:02:10 by cgross-s         ###   ########.fr       */
+/*   Created: 2025/03/16 14:21:16 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/03/16 14:25:03 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include "libft/libft.h"
-//# include <limits.h>
+long	ft_atol(const char *nptr)
+{
+	int		i;
+	int		sign;
+	long	res;
 
-int		ft_printf(const char *format, ...);
-
-//int		ft_putchar(int c);
-//int		ft_putstr(char *str);
-
-//int		ft_putptr(void *ptr);
-//int		ft_putnbr(int n);
-//int		ft_putnbr_unsigned(unsigned int n);
-
-//int		ft_putnbr_base(unsigned long n, char *base_to);
-
-#endif
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (res * sign);
+}

@@ -1,102 +1,64 @@
-# include <stdio.h>
-# include <stdlib.h>
+//# include <stdlib.h>
 # include "push_swap.h"
 
-// Estrutura do nó da lista encadeada
-typedef struct	s_dnode {
-	int				value;
-	struct s_dnode	*next;
-	struct s_dnode	*prev;
-}	t_dnode;
-
-// Função para criar um novo nó
-t_dnode	*create_node(int value) 
+int	main (int argc, char **argv)
 {
-	t_dnode	*new_node = (t_dnode *)malloc(sizeof(t_dnode));
-	if (!new_node)
+	t_dnode	*head_a;
+	//t_dnode	*head_b;
+	int		word_pos;
+	bool	flag_splt;
+
+	head_a = NULL;
+	//head_b = NULL;
+	word_pos = 1;
+	flag_splt = false;
+
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
 	{
-		ft_printf("Erro ao alocar memória\n");
+		argv = ft_split(argv[1], ' ');
+		word_pos = 0;
+		flag_splt = true;
+	}
+
+	//verify values
+		//verify the values, if everithing ok, then append
+	if (error_repeat(argv, flag_splt) == true);
+	{
+		free_split(argv, flag_splt, word_pos);// and error
+		ft_printf("Error\n");
 		exit(1);
 	}
-	new_node->value = value;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
-}
+		// if (error_limits(argv, flag_splt) == true);
+		//	free_split and error
+		// if (error_syntax(argv, flag_splt) == true);
+		//	free_split and error
 
-// Função para adicionar um nó ao final da lista
-void	append_node(t_dnode **head, int value)
-{
-	t_dnode	*new_node = create_node(value);
-	if (!*head)
+	while (argv[word_pos])//append the values
 	{
-		*head =new_node;
-		return ;
+		append_node(&head_a, ft_atol(argv[word_pos]));
+		word_pos++;
 	}
-	t_dnode *temp = *head;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new_node;
-	new_node->prev = temp;
-}
 
-// Função para imprimir a lista
-void	print_list_foward(t_dnode *head)
-{
-	ft_printf("Lista (crescente): ");
-	while (head)
-	{
-		ft_printf("%d -> ", head->value);
-		if (!head->next) break; // Guarda o último nó para a impressão reversa
-		head = head->next;
-	}
-	ft_printf("NULL\n");
-}
-
-void	print_list_backward(t_dnode * tail)
-{
-	ft_printf("lista (reversa): NULL ");
-	while (tail)
-	{
-		ft_printf("<- %d ", tail->value);
-		tail = tail->prev;
-	}
-	ft_printf("\n");
-}
-
-// Função para liberar a memória da lista
-void	free_list(t_dnode *head)
-{
-	t_dnode *temp;
-	while (head)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-}
-
-int	main ()
-{
-	t_dnode	*head = NULL;
-
-	append_node(&head, 10);
-	append_node(&head, 20);
-	append_node(&head, 30);
-	append_node(&head, 40);
-
-	print_list_foward(head);
-	//printf("Lista encadeada:\n");
-	//print_list(head);
+	print_list_foward(head_a);
 
 	// Encontrar o último nó para impressão reversa
-	t_dnode *tail = head;
+	t_dnode *tail = head_a;
 	while (tail->next)
 		tail = tail->next;
 	print_list_backward(tail);
 
-	free_list(head);
+	free_list(head_a);
+
+	free_split(argv, flag_splt, word_pos);
+
+/*	if (flag_splt == true)
+	{
+		while (--word_pos >= 0)
+			free(argv[word_pos]);
+		free(argv);
+	}*/
 
 	return (0);
-
 }
