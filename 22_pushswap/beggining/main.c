@@ -22,24 +22,67 @@ int	main (int argc, char **argv)
 		flag_splt = true;
 	}
 
+	//int		i;
+	long	nbr;
+	//i = 1;
+
+	while (argv[word_pos])
+	{
+		if (is_number(argv[word_pos]) == false)
+		{
+			free_split(argv, flag_splt, word_pos);// and error
+			ft_printf("Error\n");
+			exit(1);
+		}
+		nbr = ft_atol(argv[word_pos]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+		{
+			free_split(argv, flag_splt, word_pos);// and error
+			ft_printf("Error\n");
+			exit(1);
+		}
+		if (is_unique(head_a, nbr) == false)
+		{
+			free_split(argv, flag_splt, word_pos);// and error
+			free_list(head_a);
+			ft_printf("Error\n");
+			exit(1);
+		}
+		append_node(&head_a, nbr);
+		word_pos++;
+	}
+
+/*	while (argv[word_pos])//append the values
+	{
+		append_node(&head_a, ft_atol(argv[word_pos]));
+		word_pos++;
+	}*/
+
+	//pega a lista e faz a verificação um a um
+
 	//verify values
 		//verify the values, if everithing ok, then append
-	if (error_repeat(argv, flag_splt) == true);
+
+	// if (error_syntax(argv) == true);
+		//	free_split and error
+	
+	// turn into int
+
+	// if (error_limits(argv) == true);
+		//	free_split and error
+
+	/*if (error_repeat(argv) == true);
 	{
 		free_split(argv, flag_splt, word_pos);// and error
 		ft_printf("Error\n");
 		exit(1);
-	}
-		// if (error_limits(argv, flag_splt) == true);
-		//	free_split and error
-		// if (error_syntax(argv, flag_splt) == true);
-		//	free_split and error
+	}*/
 
-	while (argv[word_pos])//append the values
+/*	while (argv[word_pos])//append the values
 	{
 		append_node(&head_a, ft_atol(argv[word_pos]));
 		word_pos++;
-	}
+	}*/
 
 	print_list_foward(head_a);
 

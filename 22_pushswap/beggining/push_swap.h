@@ -5,6 +5,7 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 
 // Estrutura do nó da lista encadeada
 typedef struct	s_dnode {
@@ -20,5 +21,8 @@ void	print_list_backward(t_dnode * tail);
 void	free_list(t_dnode *head);
 
 void    free_split(char **argv, bool flag_splt, int word_pos);
+
+bool	is_number(char *str);
+bool	is_unique(t_dnode *head_a, int nbr);
 
 # endif
