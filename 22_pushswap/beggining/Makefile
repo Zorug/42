@@ -6,7 +6,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # Source files
-SRCS = main.c ft_printf.c utils1.c utils2.c
+SRCS = main.c ft_printf.c utils1.c utils2.c utils3.c
 
 # Libft folder and source files
 LIBFT_DIR = libft

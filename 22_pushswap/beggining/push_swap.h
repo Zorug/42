@@ -25,4 +25,8 @@ void    free_split(char **argv, bool flag_splt, int word_pos);
 bool	is_number(char *str);
 bool	is_unique(t_dnode *head_a, int nbr);
 
+void	swap_a(t_dnode *head);
+void	rotate_a(t_dnode *head);
+void	rev_rotate_a(t_dnode *head);
+
 # endif

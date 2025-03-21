@@ -52,56 +52,30 @@ int	main (int argc, char **argv)
 		word_pos++;
 	}
 
-/*	while (argv[word_pos])//append the values
-	{
-		append_node(&head_a, ft_atol(argv[word_pos]));
-		word_pos++;
-	}*/
+	print_list_foward(head_a);
+	ft_printf("swap a:\n");
+	swap_a(head_a);
 
-	//pega a lista e faz a verificação um a um
+	print_list_foward(head_a);
+	ft_printf("rotate a:\n");
+	rotate_a(head_a);
 
-	//verify values
-		//verify the values, if everithing ok, then append
-
-	// if (error_syntax(argv) == true);
-		//	free_split and error
-	
-	// turn into int
-
-	// if (error_limits(argv) == true);
-		//	free_split and error
-
-	/*if (error_repeat(argv) == true);
-	{
-		free_split(argv, flag_splt, word_pos);// and error
-		ft_printf("Error\n");
-		exit(1);
-	}*/
-
-/*	while (argv[word_pos])//append the values
-	{
-		append_node(&head_a, ft_atol(argv[word_pos]));
-		word_pos++;
-	}*/
+	print_list_foward(head_a);
+	ft_printf("reverse rotate a:\n");
+	rev_rotate_a(head_a);
 
 	print_list_foward(head_a);
 
+
 	// Encontrar o último nó para impressão reversa
-	t_dnode *tail = head_a;
+	/*t_dnode *tail = head_a;
 	while (tail->next)
 		tail = tail->next;
-	print_list_backward(tail);
+	print_list_backward(tail);*/
 
 	free_list(head_a);
 
 	free_split(argv, flag_splt, word_pos);
-
-/*	if (flag_splt == true)
-	{
-		while (--word_pos >= 0)
-			free(argv[word_pos]);
-		free(argv);
-	}*/
 
 	return (0);
 }

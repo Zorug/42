@@ -44,7 +44,71 @@ void	print_list_foward(t_dnode *head)
 	ft_printf("NULL\n");
 }
 
-void	print_list_backward(t_dnode * tail)
+void	swap_a(t_dnode *head)
+{
+	int	value1;
+	int	value2;
+
+	value1 = head->value;
+
+	head = head->next;
+	value2 = head->value;
+	head->value = value1;
+
+	head = head->prev;
+	head->value = value2;
+}
+
+void	rotate_a(t_dnode *head)
+{
+	int	value1;
+	int	value2;
+
+	value1 = head->value;
+	while (head) // anda até o ultimo valor
+	{
+		if (!head->next) break;
+		head = head->next;
+	}
+	//ft_printf("|%d|\n", head->value);
+	while (head) // anda até o ultimo valor
+	{
+		value2 = head->value;
+		head->value = value1;
+		value1 = value2;
+		if (!head->prev) break;
+		head = head->prev;
+	}
+	//ft_printf("|%d|\n", head->value);
+}
+
+void	rev_rotate_a(t_dnode *head)
+{
+	//int	value0;
+	int value1;
+	int value2;
+
+	//ft_printf("|%d|\n", head->value);
+	value1 = head->value;
+	head = head->next;
+	while (head) // anda até o ultimo valor
+	{
+		value2 = head->value;
+		head->value = value1;
+		value1 = value2;
+		if (!head->next) break;
+		head = head->next;
+	}
+	while (head)
+	{
+		if (!head->prev) break;
+		head = head->prev;
+	}
+	head->value = value1;
+	//ft_printf("|%d|\n", head->value);
+}
+
+/*void	print_list_backward(t_dnode * tail)
 {
 	ft_printf("lista (reversa): NULL ");
 	while (tail)
@@ -53,7 +117,7 @@ void	print_list_backward(t_dnode * tail)
 		tail = tail->prev;
 	}
 	ft_printf("\n");
-}
+}*/
 
 // Função para liberar a memória da lista
 void	free_list(t_dnode *head)
