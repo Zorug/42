@@ -29,6 +29,7 @@ void	append_node(t_dnode **head, int value)
 		temp = temp->next;
 	temp->next = new_node;
 	new_node->prev = temp;
+	free_list(temp);
 }
 
 // Função para imprimir a lista

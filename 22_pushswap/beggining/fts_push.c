@@ -4,8 +4,11 @@ void	push(t_dnode **head_src, t_dnode **head_dst)
 {
 	t_dnode *temp = *head_src;  // Primeiro nó da pilha A
 
-	if (!*head_src) return ;  // Se a pilha A estiver vazia, não faz nada.
-
+	if (!*head_src) 
+	{
+		//free_list(temp);
+		return ;  // Se a pilha A estiver vazia, não faz nada.
+	}
 	// Remove o primeiro nó de A
 	*head_src = (*head_src)->next;
 	if (*head_src)
@@ -17,6 +20,7 @@ void	push(t_dnode **head_src, t_dnode **head_dst)
 		(*head_dst)->prev = temp;
 	*head_dst = temp;
 	(*head_dst)->prev = NULL;
+	//free_list(temp);
 }
 
 void	pa(t_dnode **head_a, t_dnode **head_b)
