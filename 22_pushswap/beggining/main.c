@@ -4,12 +4,12 @@
 int	main (int argc, char **argv)
 {
 	t_dnode	*head_a;
-	//t_dnode	*head_b;
+	t_dnode	*head_b;
 	int		word_pos;
 	bool	flag_splt;
 
 	head_a = NULL;
-	//head_b = NULL;
+	head_b = NULL;
 	word_pos = 1;
 	flag_splt = false;
 
@@ -22,9 +22,7 @@ int	main (int argc, char **argv)
 		flag_splt = true;
 	}
 
-	//int		i;
 	long	nbr;
-	//i = 1;
 
 	while (argv[word_pos])
 	{
@@ -52,20 +50,46 @@ int	main (int argc, char **argv)
 		word_pos++;
 	}
 
-	print_list_foward(head_a);
+	/*print_list_foward(head_a);
 	ft_printf("swap a:\n");
-	swap_a(head_a);
+	//swap_a(head_a);
+	swap(head_a);
 
 	print_list_foward(head_a);
 	ft_printf("rotate a:\n");
-	rotate_a(head_a);
+	ra(head_a);
 
 	print_list_foward(head_a);
 	ft_printf("reverse rotate a:\n");
-	rev_rotate_a(head_a);
+	//rev_rotate_a(head_a);
+	rev_rotate(head_a);
 
 	print_list_foward(head_a);
 
+	ft_printf("append_B1\n");
+	print_list_foward(head_b);
+
+	//push(&head_a, &head_b);
+	pb(&head_a, &head_b);
+	print_list_foward(head_b);
+
+	ft_printf("B:\n");
+	print_list_foward(head_b);
+	ft_printf("A:\n");
+	print_list_foward(head_a);
+
+	ft_printf("rotate a:\n");
+	ra(head_a);
+	print_list_foward(head_a);
+
+	//push(&head_a, &head_b);
+	pb(&head_a, &head_b);
+	ft_printf("B:\n");
+	print_list_foward(head_b);
+	ft_printf("A:\n");
+	print_list_foward(head_a);*/
+
+	do_stuff(head_a, head_b);
 
 	// Encontrar o último nó para impressão reversa
 	/*t_dnode *tail = head_a;
@@ -74,6 +98,7 @@ int	main (int argc, char **argv)
 	print_list_backward(tail);*/
 
 	free_list(head_a);
+	free_list(head_b);
 
 	free_split(argv, flag_splt, word_pos);
 
