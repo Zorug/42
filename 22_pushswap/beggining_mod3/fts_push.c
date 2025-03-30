@@ -55,10 +55,36 @@ void	pa(t_dnode **head_a, t_dnode **head_b)
 	ft_printf("pa\n");
 }
 
-void	pb(t_dnode **head_a, t_dnode **head_b)
+/*void	pb(t_dnode **head_a, t_dnode **head_b)
 //void	pb(t_dnode *head_a, t_dnode *head_b)
 {
 //	push(&head_a, &head_b);
 	push(head_a, head_b);
+	ft_printf("pb\n");
+}*/
+
+/*void	ft_stackadd_front(t_dnode **stack, t_dnode *new)
+{
+	if (!new || !stack)
+		return ;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	new->next = *stack;
+	*stack = new;
+}*/
+
+void	pb(t_dnode **head_a, t_dnode **head_b)
+{
+	t_dnode	*tmp;
+
+	if (!(*head_a))
+		return ;
+	tmp = *head_a;
+	*head_a = (*head_a)->next;
+	tmp->next = NULL;
+	ft_stackadd_front(head_b, tmp);
 	ft_printf("pb\n");
 }
