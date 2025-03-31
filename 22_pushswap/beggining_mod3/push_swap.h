@@ -12,6 +12,7 @@ typedef struct	s_dnode {
 	int				value;
 	struct s_dnode	*next;
 	struct s_dnode	*prev;
+	bool	print_v;
 }	t_dnode;
 
 /*typedef struct	s_data {
@@ -57,6 +58,9 @@ void	rr(t_dnode **head_a, t_dnode **head_b);
 void	rra(t_dnode **head_a);
 void	rrb(t_dnode **head_b);
 void	rrr(t_dnode **head_a, t_dnode **head_b);
+//void	rra(t_dnode **head_a, bool print_ft);
+//void	rrb(t_dnode **head_b, bool print_ft);
+//void	rrr(t_dnode **head_a, t_dnode **head_b, bool print_ft);
 
 //void	sa(t_dnode *head_a);
 void	sa(t_dnode **head_a);

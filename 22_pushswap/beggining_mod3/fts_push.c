@@ -23,7 +23,7 @@
 	//free_list(temp);
 }*/
 
-void	push(t_dnode **src, t_dnode **dest)
+/*void	push(t_dnode **src, t_dnode **dest)
 {
 	t_dnode	*node_to_push;
 
@@ -45,15 +45,15 @@ void	push(t_dnode **src, t_dnode **dest)
 		node_to_push->next->prev = node_to_push;
 		*dest = node_to_push;
 	}
-}
+}*/
 
-void	pa(t_dnode **head_a, t_dnode **head_b)
+/*void	pa(t_dnode **head_a, t_dnode **head_b)
 //void	pa(t_dnode *head_a, t_dnode *head_b)
 {
 	push(head_b, head_a);
 //	push(&head_b, &head_a);
 	ft_printf("pa\n");
-}
+}*/
 
 /*void	pb(t_dnode **head_a, t_dnode **head_b)
 //void	pb(t_dnode *head_a, t_dnode *head_b)
@@ -63,18 +63,18 @@ void	pa(t_dnode **head_a, t_dnode **head_b)
 	ft_printf("pb\n");
 }*/
 
-/*void	ft_stackadd_front(t_dnode **stack, t_dnode *new)
+void 	pa(t_dnode **head_a, t_dnode **head_b)
 {
-	if (!new || !stack)
+	t_dnode *tmp;
+
+	if(!(*head_b))
 		return ;
-	if (!*stack)
-	{
-		*stack = new;
-		return ;
-	}
-	new->next = *stack;
-	*stack = new;
-}*/
+	tmp = *head_b;
+	*head_b = (*head_b)->next;
+	tmp->next = NULL;
+	ft_stackadd_front(head_a, tmp);
+	ft_printf("pa\n");
+}
 
 void	pb(t_dnode **head_a, t_dnode **head_b)
 {

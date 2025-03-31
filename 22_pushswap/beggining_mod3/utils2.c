@@ -59,12 +59,56 @@ void	do_stuff(t_dnode **a)
 	b = NULL;
 	tmp = *a;
 	print_both(tmp, b);
-	//print_list_foward(a);
 	pb(a, &b);
-	//pb(&a, &b);
-	//print_list_foward(head_b);
 	tmp = *a;
 	print_both(tmp, b);
+	pb(a, &b);
+	tmp = *a;
+	print_both(tmp, b);
+	pb(a, &b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	/*pa(a, &b);
+	tmp = *a;
+	print_both(tmp, b);*/
+
+	rra(a);
+	tmp = *a;
+	print_both(tmp, b);
+
+	rrb(&b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	rrr(a, &b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	ra(a);
+	tmp = *a;
+	print_both(tmp, b);
+
+	rb(&b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	rr(a, &b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	sa(a);
+	tmp = *a;
+	print_both(tmp, b);
+
+	sb(&b);
+	tmp = *a;
+	print_both(tmp, b);
+
+	ss(a, &b);
+	tmp = *a;
+	print_both(tmp, b);
+
 	ft_stackclear(&b, ft_free);
 }
 
