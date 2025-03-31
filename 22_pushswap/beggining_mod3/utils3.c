@@ -53,20 +53,33 @@ void	ft_stackadd_back(t_dnode **stack, t_dnode *new)
 
 t_dnode	*get_stack(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	t_dnode *a;
-	int	j;
+	int		j;
+	bool	argv_free = false;
 
 	i = 1;
 	a = NULL;
 	if (argc == 2)
-		exit (EXIT_SUCCESS);
+		//exit (EXIT_SUCCESS);
+		{
+			argv = ft_split(argv[1], ' ');
+			//word_pos = 0;
+			//flag_splt = true;
+			i = 0;
+			argc++;
+			argv_free = true;
+		}
 	while (i < argc)
 	{
 		j = ft_atoi(argv[i]);
 		ft_stackadd_back(&a, ft_stack_new(j));
 		i++;
 	}
+	//free argv!!
+	//ft_stackclear(argv, ft_free);
+	//ft_free(argv);
+	if (argv_free == true) free_matrix(argv);
 	return (a);
 }
 

@@ -14,6 +14,11 @@ typedef struct	s_dnode {
 	struct s_dnode	*prev;
 }	t_dnode;
 
+/*typedef struct	s_data {
+	bool	flag_split;
+	int		word_pos;
+} t_data;*/
+
 t_dnode	*create_node(int value);
 void	append_node(t_dnode **stack, int nbr);
 void	append_node_prev(t_dnode **head, int value);
