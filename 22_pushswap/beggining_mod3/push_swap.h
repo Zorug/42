@@ -98,4 +98,6 @@ t_dnode	*get_stack(int argc, char **argv);
 void	ft_sort(t_dnode **a);
 //void	ft_sort(t_dnode *a);
 
+int	argv_cnt(char **argv);
+
 # endif

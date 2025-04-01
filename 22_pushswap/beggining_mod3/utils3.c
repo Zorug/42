@@ -20,7 +20,6 @@ t_dnode	*ft_stack_new(long content)
 	new = (t_dnode *)malloc(sizeof(t_dnode));
 	if (!new)
 		return (NULL);
-	//new->nbr = content;
 	new->value = content;
 	new->next = NULL;
 	return (new);
@@ -30,7 +29,6 @@ t_dnode	*ft_stack_last(t_dnode *stack)
 {
 	if (!stack)
 		return (0);
-//		return (NULL);
 	while (stack->next)
 		stack = stack->next;
 	return (stack);
@@ -51,35 +49,52 @@ void	ft_stackadd_back(t_dnode **stack, t_dnode *new)
 	last->next = new;
 }
 
+int	argv_cnt(char **argv)
+{
+	int i;
+
+	i = 0;
+	while(argv[i])
+	{
+		i++;
+		//*argv++;
+	}
+	ft_printf("\n!!%d!!\n", i);
+	return (i);
+}
+
 t_dnode	*get_stack(int argc, char **argv)
 {
 	int		i;
 	t_dnode *a;
-	int		j;
+	long	nbr;
 	bool	argv_free = false;
 
 	i = 1;
 	a = NULL;
 	if (argc == 2)
-		//exit (EXIT_SUCCESS);
 		{
 			argv = ft_split(argv[1], ' ');
-			//word_pos = 0;
-			//flag_splt = true;
+			//contar o número de argv e atribuir a argv
+			argc = argv_cnt(argv);
 			i = 0;
-			argc++;
+			//argc++;
 			argv_free = true;
 		}
 	while (i < argc)
 	{
-		j = ft_atoi(argv[i]);
-		ft_stackadd_back(&a, ft_stack_new(j));
+		if (!is_number(argv[i]))
+			error_free(&a, argv, argv_free);
+		nbr = ft_atoi(argv[i]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			error_free(&a, argv, argv_free);
+		if (!is_unique(a, nbr))
+			error_free(&a, argv, argv_free);
+		ft_stackadd_back(&a, ft_stack_new(nbr));
 		i++;
 	}
-	//free argv!!
-	//ft_stackclear(argv, ft_free);
-	//ft_free(argv);
-	if (argv_free == true) free_matrix(argv);
+	if (argv_free == true)
+		free_matrix(argv);
 	return (a);
 }
 
@@ -103,13 +118,6 @@ t_dnode	*get_stack(int argc, char **argv)
 }*/
 
 void	ft_sort(t_dnode **a)
-//void	ft_sort(t_dnode *a)
 {
-//	t_dnode	*b;
-
-//	b = NULL;
-
 	do_stuff(a);
-
-	//ft_stackclear(&b, ft_free);
 }

@@ -17,6 +17,15 @@
 
 void	swap(t_dnode **head)
 {
+	t_dnode	*tmp;
+
+	if (!(*head) || !(*head)->next)
+		return ;
+	tmp = *head;
+	*head = (*head)->next;
+	tmp->next = (*head)->next;
+	(*head)->next = tmp;
+	/*
 	int	len;
 
 	len = stack_len(*head);
@@ -28,8 +37,9 @@ void	swap(t_dnode **head)
 	if ((*head)->next)
 		(*head)->next->prev = (*head)->prev;
 	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
+	(*head)->prev = NULL;*/
 }
+
 
 //void	sa(t_dnode *head_a)
 void	sa(t_dnode **head_a)
@@ -56,3 +66,16 @@ void	ss(t_dnode **head_a, t_dnode **head_b)
 	//swap(*head_b);
 	ft_printf("ss\n");
 }
+
+/*void	sa(t_dnode **head_a)
+{
+	t_dnode	*tmp;
+
+	if (!(*head_a) || !(*head_a)->next)
+		return ;
+	tmp = *head_a;
+	*head_a = (*head_a)->next;
+	tmp->next = (*head_a)->next;
+	(*head_a)->next = tmp;
+	ft_printf("sa\n");
+}*/

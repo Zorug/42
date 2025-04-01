@@ -1,40 +1,5 @@
 # include "push_swap.h"
 
-// Função para criar um novo nó
-/*t_dnode	*create_node(int value)
-{
-	t_dnode	*new_node = (t_dnode *)malloc(sizeof(t_dnode));
-	if (!new_node)
-	{
-		ft_printf("Erro ao alocar memória\n");
-		exit(1);
-	}
-	new_node->value = value;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
-}*/
-
-// Função para adicionar um nó ao final da lista
-/*void	append_node(t_dnode **stack, int nbr)
-{
-	t_dnode	*new_node;// = create_node(value);
-	t_dnode *temp;// = *stack;
-
-	new_node = create_node(nbr); //fez um malloc
-	if (!*stack)
-	{
-		*stack = new_node;
-		return ;
-	}
-	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new_node;
-	new_node->prev = temp;
-	//free_list(temp);
-}*/
-
 t_dnode	*find_last_node(t_dnode *head)
 {
 	if (head == NULL)
@@ -81,73 +46,6 @@ void	print_list_foward(t_dnode *head)
 		head = head->next;
 	}
 	ft_printf("NULL\n");
-}
-
-/*
-void	print_list_backward(t_dnode * tail)
-{
-	ft_printf("lista (reversa): NULL ");
-	while (tail)
-	{
-		ft_printf("<- %d ", tail->value);
-		tail = tail->prev;
-	}
-	ft_printf("\n");
-}*/
-/*
-// Função para liberar a memória da lista
-void	free_list(t_dnode *head)
-{
-	t_dnode *temp;
-	while (head)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-}
-*/
-void	free_matrix(char **argv)
-{
-	int	i;
-
-	if (argv == NULL || *argv == NULL)
-		return ;
-	i = 0;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv);
-}
-
-void	free_stack(t_dnode **stack)
-{
-	t_dnode	*tmp;
-	t_dnode	*current;
-
-	ft_printf(" !FREE0! ");
-	if (stack == NULL)// || *stack == NULL)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		ft_printf(" !FREE1! ");
-		tmp = current->next;
-		//////
-		current->value = 0;
-		//////
-		free(current);
-		current = tmp;
-	}
-	*stack = NULL;
-}
-
-void	error_free(t_dnode **a, char **argv, bool flag_argc_2)
-{
-	free_stack(a);
-	if (flag_argc_2)
-		free_matrix(argv);
-	write(2, "Error\n", 6);
-	exit(1);
 }
 
 int	stack_len(t_dnode *stack)
