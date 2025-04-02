@@ -62,6 +62,7 @@ void	error_free(t_dnode **a, char **argv, bool flag_argc_2)
 	free_stack(a);
 	if (flag_argc_2)
 		free_matrix(argv);
-	write(2, "Error\n", 6);
+	//write(2, "Error\n", 6);
+    ft_printf("Error\n");
 	exit(1);
 }

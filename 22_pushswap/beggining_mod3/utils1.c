@@ -8,7 +8,7 @@ t_dnode	*find_last_node(t_dnode *head)
 		head = head->next;
 	return (head);
 }
-
+/*
 void	append_node(t_dnode **stack, int nbr)
 {
 	t_dnode	*node;
@@ -33,7 +33,7 @@ void	append_node(t_dnode **stack, int nbr)
 		last_node->next = node;
 		node->prev = last_node;
 	}
-}
+}*/
 
 // Função para imprimir a lista
 void	print_list_foward(t_dnode *head)
@@ -42,6 +42,30 @@ void	print_list_foward(t_dnode *head)
 	while (head)
 	{
 		ft_printf("%d -> ", head->value);
+		if (!head->next) break; // Guarda o último nó para a impressão reversa
+		head = head->next;
+	}
+	ft_printf("NULL\n");
+}
+
+void	print_cost(t_dnode *head)
+{
+	ft_printf("Lista: CUSTO: ");
+	while (head)
+	{
+		ft_printf("%d -> ", head->push_cost);
+		if (!head->next) break; // Guarda o último nó para a impressão reversa
+		head = head->next;
+	}
+	ft_printf("NULL\n");
+}
+
+void	print_target(t_dnode *head)
+{
+	ft_printf("Lista: ALVO: ");
+	while (head)
+	{
+		ft_printf("%d -> ", head->target_node->value);
 		if (!head->next) break; // Guarda o último nó para a impressão reversa
 		head = head->next;
 	}

@@ -10,9 +10,13 @@
 // Estrutura do nó da lista encadeada
 typedef struct	s_dnode {
 	int				value;
+	int				push_cost;
+	int				index;
 	struct s_dnode	*next;
 	struct s_dnode	*prev;
-	bool	print_v;
+	bool			above_median;
+	struct s_dnode	*target_node;
+	bool			cheapest;
 }	t_dnode;
 
 /*typedef struct	s_data {
@@ -76,9 +80,11 @@ void	pb(t_dnode **head_b, t_dnode **head_a);
 
 void	do_stuff(t_dnode **a);
 //void	do_stuff(t_dnode *a);
+//void	do_stuff(t_dnode *a);
 //void	do_stuff(t_dnode *head_a, t_dnode *head_b);
 //void	do_stuff(t_dnode *head_a);
-void	print_both(t_dnode *head_a, t_dnode *head_b);
+//void	print_both(t_dnode *head_a, t_dnode *head_b);
+void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *));
 
 t_dnode	*find_last_node(t_dnode *head);
 
@@ -98,6 +104,19 @@ t_dnode	*get_stack(int argc, char **argv);
 void	ft_sort(t_dnode **a);
 //void	ft_sort(t_dnode *a);
 
+void	push_cost(t_dnode **a, t_dnode **b);
+
 int	argv_cnt(char **argv);
+
+void	init_nodes(t_dnode *a, t_dnode *b);
+void	current_index(t_dnode *stack);
+////////
+//t_dnode 	current_index(t_dnode *stack);
+//////////
+void	set_cheapest(t_dnode *stack);
+
+void	print_cost(t_dnode *head);
+void	print_both_cost(t_dnode *head_a, t_dnode *head_b);
+void	print_target(t_dnode *head);
 
 # endif
