@@ -119,5 +119,11 @@ t_dnode	*get_stack(int argc, char **argv)
 
 void	ft_sort(t_dnode **a)
 {
-	do_stuff(a);
+	t_dnode *b;
+
+	b = NULL;
+	//do_stuff(a);
+	do_stuff(a, &b);
+
+	ft_stackclear(&b, ft_free);
 }

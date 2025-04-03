@@ -40,33 +40,6 @@ void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *))
 	ft_printf("\n");
 }
 
-/*void	print_both(t_dnode *head_a, t_dnode *head_b)
-{
-	ft_printf("A: ");
-	print_list_foward(head_a);
-	ft_printf("B: ");
-	print_list_foward(head_b);
-	ft_printf("\n");
-}
-
-void	print_both_cost(t_dnode *head_a, t_dnode *head_b)
-{
-	ft_printf("A: ");
-	print_cost(head_a);
-	ft_printf("B: ");
-	print_cost(head_b);
-	ft_printf("\n");
-}*/
-
-/*void	print_test(t_dnode *head_a, t_dnode *head_b, void (*ft))
-{
-	ft_printf("A: ");
-	print_cost(head_a);
-	ft_printf("B: ");
-	print_cost(head_b);
-	ft_printf("\n");
-}*/
-
 /*void	push_cost(t_dnode **a, t_dnode **b)
 {
 	int		i;
@@ -164,70 +137,92 @@ static void	move_a_to_b(t_dnode **a, t_dnode **b)
 	pb(a, b);
 }
 
-void	do_stuff(t_dnode **a)
+/*t_dnode	*find_max(t_dnode *stack)
 {
-	t_dnode	*b;
-	//t_dnode *tmp;
+	long	max;
+	t_dnode	*max_node;
 
-	b = NULL;
+	if (!stack)
+		return NULL;
+	max = LONG_MIN;
+	while (stack)
+	{
+		if (stack->value > max)
+		{
+			max = stack->value;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
+}*/
+
+void	sort_three(t_dnode **a)
+{
+	t_dnode	*biggest_node;
+
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a);
+	else if ((*a)->next == biggest_node)
+		rra(a);
+	if ((*a)->value > (*a)->next->value)
+		sa(a);
+}
+
+//void	do_stuff(t_dnode **a)
+void	do_stuff(t_dnode **a, t_dnode **b)
+{
+	int	len_a;
+
+	len_a = stack_len(*a);
+
+	//t_dnode	*b;
+
+	//b = NULL;
 
 	//1. push 2
-	pb(a, &b);
-	pb(a, &b);
-	//tmp = *a;
+	//pb(a, &b);
+	//pb(a, &b);
+	if (len_a-- > 3)
+		pb(a, b);
+	if (len_a-- > 3)
+		pb(a, b);
 	//print_both(*a, b);
-	print_both(*a, b, print_list_foward);
+//	print_both(*a, b, print_list_foward);
+	print_both(*a, *b, print_list_foward);
 
 	//calculate pushcost
 	//push_cost(&a, &b);
-	init_nodes(*a, b);
+	//init_nodes(*a, b);
 
+	while (len_a-- > 3)
+ 	{
+		init_nodes(*a, *b);
 
-	//print_both(*a, b, print_cost);
-	print_cost(*a);
+		//print_both(*a, b, print_cost);
+		//print_cost(*a);
 
-	ft_printf("\n");	
-	//print_both(*a, b, print_target);
-	print_target(*a);
+		ft_printf("\n");	
+		//print_both(*a, b, print_target);
+		//print_target(*a);
 
-
-	move_a_to_b(a, &b);
-	print_both(*a, b, print_list_foward);
+		//move_a_to_b(a, &b);
+		move_a_to_b(a, b);
+		//print_both(*a, b, print_list_foward);
+		print_both(*a, *b, print_list_foward);
+		//ft_printf("<%d>", len_a);
+	}
+	sort_three(a);
+	print_both(*a, *b, print_list_foward);
 	/*rra(a);
-	tmp = *a;
-	print_both(tmp, b);
-
 	rrb(&b);
-	tmp = *a;
-	print_both(tmp, b);
-
 	rrr(a, &b);
-	tmp = *a;
-	print_both(tmp, b);
-
 	ra(a);
-	tmp = *a;
-	print_both(tmp, b);
-
 	rb(&b);
-	tmp = *a;
-	print_both(tmp, b);
-
 	rr(a, &b);
-	tmp = *a;
-	print_both(tmp, b);
-
 	sa(a);
-	tmp = *a;
-	print_both(tmp, b);
-
 	sb(&b);
-	tmp = *a;
-	print_both(tmp, b);
-
-	ss(a, &b);
-	tmp = *a;
-	print_both(tmp, b);*/
-
-	ft_stackclear(&b, ft_free);
+	ss(a, &b);*/
+	//ft_stackclear(&b, ft_free);
 }

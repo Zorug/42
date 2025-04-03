@@ -78,7 +78,8 @@ void	pa(t_dnode **head_a, t_dnode **head_b);
 void	pb(t_dnode **head_b, t_dnode **head_a);
 //void	pb(t_dnode *head_b, t_dnode *head_a);
 
-void	do_stuff(t_dnode **a);
+//void	do_stuff(t_dnode **a);
+void	do_stuff(t_dnode **a, t_dnode **b);
 //void	do_stuff(t_dnode *a);
 //void	do_stuff(t_dnode *a);
 //void	do_stuff(t_dnode *head_a, t_dnode *head_b);
@@ -131,5 +132,8 @@ t_dnode	*get_cheapest(t_dnode *stack);
 
 void	prep_for_push(t_dnode **stack, t_dnode *top_node,
 	char stack_name);
+
+void	sort_three(t_dnode **a);
+t_dnode	*find_max(t_dnode *stack);
 
 # endif
