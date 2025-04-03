@@ -119,4 +119,17 @@ void	print_cost(t_dnode *head);
 void	print_both_cost(t_dnode *head_a, t_dnode *head_b);
 void	print_target(t_dnode *head);
 
+//static void	move_a_to_b(t_dnode **a, t_dnode **b);
+
+t_dnode	*get_cheapest(t_dnode *stack);
+
+//static void	rotate_both(t_dnode **a, t_dnode **b,
+//	t_dnode *cheapest_node);
+
+//static void	rev_rotate_both(t_dnode **a, t_dnode **b,
+//	t_dnode *cheapest_node);
+
+void	prep_for_push(t_dnode **stack, t_dnode *top_node,
+	char stack_name);
+
 # endif
