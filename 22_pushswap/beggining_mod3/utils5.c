@@ -69,6 +69,54 @@ static void	set_target_a(t_dnode *a, t_dnode *b)
 	}
 }
 
+t_dnode	*find_min(t_dnode *stack)
+{
+	long	min;
+	t_dnode	*min_node;
+
+	if (!stack)
+		return (NULL);
+	min = LONG_MAX;
+	while (stack)
+	{
+		if (stack->value < min)
+		{
+			min = stack->value;
+			min_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (min_node);
+}
+
+static void	set_target_b(t_dnode *a, t_dnode *b)
+{
+	t_dnode	*current_a;
+	t_dnode	*target_node;
+	long	best_match_index;
+
+	while (b)
+	{
+		best_match_index = LONG_MAX;
+		current_a = a;
+		while (current_a)
+		{
+			if (current_a->value > b->value
+				&& current_a->value < best_match_index)
+			{
+				best_match_index = current_a->value;
+				target_node = current_a;
+			}
+			current_a = current_a->next;
+		}
+		if (best_match_index == LONG_MAX)
+			b->target_node = find_min(a);
+		else
+			b->target_node = target_node;
+		b = b->next;
+	}
+}
+
 static void	cost_analysis_a(t_dnode *a,t_dnode *b)
 {
 	int	len_a;
@@ -109,11 +157,18 @@ void	set_cheapest(t_dnode *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	init_nodes(t_dnode *a, t_dnode *b)
+void	init_nodes_a(t_dnode *a, t_dnode *b)
 {
 	current_index(a);
 	current_index(b);
 	set_target_a(a, b);
 	cost_analysis_a(a, b);
 	set_cheapest(a);
+}
+
+void	init_nodes_b(t_dnode *a, t_dnode *b)
+{
+	current_index(a);
+	current_index(b);
+	set_target_b(a, b); ////
 }

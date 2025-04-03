@@ -109,7 +109,7 @@ void	push_cost(t_dnode **a, t_dnode **b);
 
 int	argv_cnt(char **argv);
 
-void	init_nodes(t_dnode *a, t_dnode *b);
+void	init_nodes_a(t_dnode *a, t_dnode *b);
 void	current_index(t_dnode *stack);
 ////////
 //t_dnode 	current_index(t_dnode *stack);
@@ -135,5 +135,9 @@ void	prep_for_push(t_dnode **stack, t_dnode *top_node,
 
 void	sort_three(t_dnode **a);
 t_dnode	*find_max(t_dnode *stack);
+
+void	init_nodes_b(t_dnode *a, t_dnode *b);
+t_dnode	*find_min(t_dnode *stack);
+//static void	move_b_to_a(t_dnode **a, t_dnode **a);
 
 # endif

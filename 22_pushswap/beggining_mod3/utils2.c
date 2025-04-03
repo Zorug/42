@@ -170,6 +170,23 @@ void	sort_three(t_dnode **a)
 		sa(a);
 }
 
+static void	move_b_to_a(t_dnode **a, t_dnode **b)
+{
+	prep_for_push(a, (*b)->target_node, 'a');
+	pa(a, b);
+}
+
+static void	min_on_top(t_dnode **a)
+{
+	while ((*a)->value != find_min(*a)->value)
+	{
+		if (find_min(*a)->above_median)
+			ra(a);
+		else
+			rra(a);
+	}
+}
+
 //void	do_stuff(t_dnode **a)
 void	do_stuff(t_dnode **a, t_dnode **b)
 {
@@ -198,7 +215,7 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 
 	while (len_a-- > 3)
  	{
-		init_nodes(*a, *b);
+		init_nodes_a(*a, *b);
 
 		//print_both(*a, b, print_cost);
 		//print_cost(*a);
@@ -207,13 +224,23 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 		//print_both(*a, b, print_target);
 		//print_target(*a);
 
-		//move_a_to_b(a, &b);
 		move_a_to_b(a, b);
 		//print_both(*a, b, print_list_foward);
 		print_both(*a, *b, print_list_foward);
 		//ft_printf("<%d>", len_a);
 	}
 	sort_three(a);
+	print_both(*a, *b, print_list_foward);
+
+	while (*b)
+	{
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	print_both(*a, *b, print_list_foward);
+	current_index(*a);
+	print_both(*a, *b, print_list_foward);
+	min_on_top(a);
 	print_both(*a, *b, print_list_foward);
 	/*rra(a);
 	rrb(&b);
