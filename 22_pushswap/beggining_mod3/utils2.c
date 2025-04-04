@@ -101,23 +101,6 @@ void	prep_for_push(t_dnode **stack, t_dnode *top_node,
 	}
 }
 
-/*
-static void	move_a_to_b(t_dnode **a, t_dnode **b)
-{
-	t_dnode	*cheapest_node;
-
-	cheapest_node = get_cheapest(*a);
-	if (cheapest_node->above_median
-		&& cheapest_node->target_node->above_median)
-		rotate_both(a, b, cheapest_node);
-	else if (!(cheapest_node->above_median)
-		&& !(cheapest_node->target_node->above_median))
-		rev_rotate_both(a, b, cheapest_node);
-	prep_for_push(a, cheapest_node, 'a');
-	prep_for_push(b, cheapest_node->target_node, 'b');
-	pb(a, b);
-}*/
-
 void	sort_three(t_dnode **a)
 {
 	t_dnode	*biggest_node;
@@ -130,25 +113,6 @@ void	sort_three(t_dnode **a)
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
 }
-
-/*
-static void	move_b_to_a(t_dnode **a, t_dnode **b)
-{
-	prep_for_push(a, (*b)->target_node, 'a');
-	pa(a, b);
-}
-
-static void	min_on_top(t_dnode **a)
-{
-	while ((*a)->value != find_min(*a)->value)
-	{
-		if (find_min(*a)->above_median)
-			ra(a);
-		else
-			rra(a);
-	}
-}
-*/
 
 //void	do_stuff(t_dnode **a)
 void	do_stuff(t_dnode **a, t_dnode **b)
@@ -163,25 +127,21 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 		pb(a, b);
 	if (len_a-- > 3)
 		pb(a, b);
-	//print_both(*a, b);
-//	print_both(*a, b, print_list_foward);
+
 	print_both(*a, *b, print_list_foward);
 
 	while (len_a-- > 3)
  	{
 		init_nodes_a(*a, *b);
 
-		//print_both(*a, b, print_cost);
-		//print_cost(*a);
 
 		ft_printf("\n");	
-		//print_both(*a, b, print_target);
-		//print_target(*a);
+
 
 		move_a_to_b(a, b);
-		//print_both(*a, b, print_list_foward);
+
 		print_both(*a, *b, print_list_foward);
-		//ft_printf("<%d>", len_a);
+
 	}
 	sort_three(a);
 	print_both(*a, *b, print_list_foward);

@@ -54,7 +54,8 @@ t_dnode	*ft_stack_last(t_dnode *stack);
 void	ft_stackadd_back(t_dnode **stack, t_dnode *new);
 int	argv_cnt(char **argv);
 t_dnode	*get_stack(int argc, char **argv);
-void	ft_sort(t_dnode **a);
+//void	ft_sort(t_dnode **a);
+void	ft_sort(t_dnode **a, t_dnode **b);
 //void	ft_sort(t_dnode *a);
 
 //--- utils4
@@ -76,6 +77,7 @@ void	cost_analysis_a(t_dnode *a,t_dnode *b);
 void	set_cheapest(t_dnode *stack);
 void	init_nodes_a(t_dnode *a, t_dnode *b);
 void	init_nodes_b(t_dnode *a, t_dnode *b);
+bool	stack_sorted(t_dnode *stack);
 
 //--- utils_free
 void	ft_free(void *x);
@@ -83,9 +85,6 @@ void	ft_stackclear(t_dnode **stack, void (*del)(void*));
 void	free_matrix(char **argv);
 void	free_stack(t_dnode **stack);
 void	error_free(t_dnode **a, char **argv, bool flag_argc_2);
-
-
-
 
 
 //void	free_list(t_dnode *head);
@@ -134,9 +133,7 @@ void	pa(t_dnode **head_a, t_dnode **head_b);
 void	pb(t_dnode **head_b, t_dnode **head_a);
 //void	pb(t_dnode *head_b, t_dnode *head_a);
 
-
 //void	push_cost(t_dnode **a, t_dnode **b);
-
 
 ////////
 //t_dnode 	current_index(t_dnode *stack);
@@ -146,11 +143,6 @@ void	pb(t_dnode **head_b, t_dnode **head_a);
 
 //static void	move_a_to_b(t_dnode **a, t_dnode **b);
 
-
-
-
 //static void	move_b_to_a(t_dnode **a, t_dnode **a);
-
-
 
 # endif

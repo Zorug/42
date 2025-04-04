@@ -98,12 +98,16 @@ t_dnode	*get_stack(int argc, char **argv)
 	return (a);
 }
 
-void	ft_sort(t_dnode **a)
+//void	ft_sort(t_dnode **a)
+void	ft_sort(t_dnode **a, t_dnode **b)
 {
-	t_dnode *b;
+	//t_dnode *b;
 
-	b = NULL;
-	do_stuff(a, &b);
+	//b = NULL;
 
-	ft_stackclear(&b, ft_free);
+	//do_stuff(a, &b);
+	do_stuff(a, b);
+
+	//ft_stackclear(&b, ft_free);
+	ft_stackclear(b, ft_free);
 }

@@ -175,3 +175,16 @@ void	init_nodes_b(t_dnode *a, t_dnode *b)
 	current_index(b);
 	set_target_b(a, b); ////
 }
+
+bool	stack_sorted(t_dnode *stack)
+{
+	if (!stack)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
