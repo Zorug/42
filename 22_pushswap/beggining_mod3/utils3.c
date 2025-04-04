@@ -98,31 +98,11 @@ t_dnode	*get_stack(int argc, char **argv)
 	return (a);
 }
 
-/*t_dnode	*get_stack(int argc, char **argv)
-{
-	int	i;
-	t_dnode *a;
-	int	j;
-
-	i = 1;
-	a = NULL;
-	if (argc == 2)
-		exit (EXIT_SUCCESS);
-	while (i < argc)
-	{
-		j = ft_atoi(argv[i]);
-		ft_stackadd_back(&a, ft_stack_new(j));
-		i++;
-	}
-	return (a);
-}*/
-
 void	ft_sort(t_dnode **a)
 {
 	t_dnode *b;
 
 	b = NULL;
-	//do_stuff(a);
 	do_stuff(a, &b);
 
 	ft_stackclear(&b, ft_free);

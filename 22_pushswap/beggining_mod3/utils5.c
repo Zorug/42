@@ -41,7 +41,8 @@ t_dnode *find_max(t_dnode *stack)
 	return (max_node);
 }
 
-static void	set_target_a(t_dnode *a, t_dnode *b)
+//static void	set_target_a(t_dnode *a, t_dnode *b)
+void	set_target_a(t_dnode *a, t_dnode *b)
 {
 	t_dnode	*current_b;
 	t_dnode	*target_node;
@@ -89,7 +90,8 @@ t_dnode	*find_min(t_dnode *stack)
 	return (min_node);
 }
 
-static void	set_target_b(t_dnode *a, t_dnode *b)
+//static void	set_target_b(t_dnode *a, t_dnode *b)
+void	set_target_b(t_dnode *a, t_dnode *b)
 {
 	t_dnode	*current_a;
 	t_dnode	*target_node;
@@ -117,7 +119,8 @@ static void	set_target_b(t_dnode *a, t_dnode *b)
 	}
 }
 
-static void	cost_analysis_a(t_dnode *a,t_dnode *b)
+//static void	cost_analysis_a(t_dnode *a,t_dnode *b)
+void	cost_analysis_a(t_dnode *a,t_dnode *b)
 {
 	int	len_a;
 	int	len_b;

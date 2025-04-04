@@ -40,29 +40,6 @@ void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *))
 	ft_printf("\n");
 }
 
-/*void	push_cost(t_dnode **a, t_dnode **b)
-{
-	int		i;
-	int 	a_len;
-	//int 	b_len;
-	//t_dnode	*temp;
-	
-	i = 0;
-	//temp = *a;
-	a_len = stack_len(*a);
-	//temp = *b;
-	//b_len = stack_len(*b);
-	ft_printf("||- %d -||", a_len);
-	while(*a)
-	{
-		(*a)->cost = i;
-		ft_printf("<<%d|%d|%d>>",(*a)->cost,(*b)->cost, i);
-		(*a) = (*a)->next;
-		i++;
-		//rotates to top ou rr, count
-	}
-}*/
-
 t_dnode	*get_cheapest(t_dnode *stack)
 {
 	if (!stack)
@@ -76,7 +53,9 @@ t_dnode	*get_cheapest(t_dnode *stack)
 	return (NULL);
 }
 
-static void	rotate_both(t_dnode **a, t_dnode **b,
+/*
+//static void	rotate_both(t_dnode **a, t_dnode **b,
+void	rotate_both(t_dnode **a, t_dnode **b,
 							t_dnode *cheapest_node)
 {
 	while (*b != cheapest_node->target_node
@@ -86,7 +65,8 @@ static void	rotate_both(t_dnode **a, t_dnode **b,
 	current_index(*b);
 }
 
-static void	rev_rotate_both(t_dnode **a, t_dnode **b,
+//static void	rev_rotate_both(t_dnode **a, t_dnode **b,
+void	rev_rotate_both(t_dnode **a, t_dnode **b,
 	t_dnode *cheapest_node)
 {
 	while (*b != cheapest_node->target_node
@@ -94,7 +74,7 @@ static void	rev_rotate_both(t_dnode **a, t_dnode **b,
 		rrr(a, b);
 	current_index(*a);
 	current_index(*b);
-}
+}*/
 
 void	prep_for_push(t_dnode **stack, t_dnode *top_node,
 						char stack_name)
@@ -121,6 +101,7 @@ void	prep_for_push(t_dnode **stack, t_dnode *top_node,
 	}
 }
 
+/*
 static void	move_a_to_b(t_dnode **a, t_dnode **b)
 {
 	t_dnode	*cheapest_node;
@@ -135,26 +116,6 @@ static void	move_a_to_b(t_dnode **a, t_dnode **b)
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
 	pb(a, b);
-}
-
-/*t_dnode	*find_max(t_dnode *stack)
-{
-	long	max;
-	t_dnode	*max_node;
-
-	if (!stack)
-		return NULL;
-	max = LONG_MIN;
-	while (stack)
-	{
-		if (stack->value > max)
-		{
-			max = stack->value;
-			max_node = stack;
-		}
-		stack = stack->next;
-	}
-	return (max_node);
 }*/
 
 void	sort_three(t_dnode **a)
@@ -170,6 +131,7 @@ void	sort_three(t_dnode **a)
 		sa(a);
 }
 
+/*
 static void	move_b_to_a(t_dnode **a, t_dnode **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
@@ -186,6 +148,7 @@ static void	min_on_top(t_dnode **a)
 			rra(a);
 	}
 }
+*/
 
 //void	do_stuff(t_dnode **a)
 void	do_stuff(t_dnode **a, t_dnode **b)
@@ -194,13 +157,8 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 
 	len_a = stack_len(*a);
 
-	//t_dnode	*b;
-
-	//b = NULL;
-
 	//1. push 2
-	//pb(a, &b);
-	//pb(a, &b);
+
 	if (len_a-- > 3)
 		pb(a, b);
 	if (len_a-- > 3)
@@ -208,10 +166,6 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 	//print_both(*a, b);
 //	print_both(*a, b, print_list_foward);
 	print_both(*a, *b, print_list_foward);
-
-	//calculate pushcost
-	//push_cost(&a, &b);
-	//init_nodes(*a, b);
 
 	while (len_a-- > 3)
  	{
@@ -242,14 +196,5 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 	print_both(*a, *b, print_list_foward);
 	min_on_top(a);
 	print_both(*a, *b, print_list_foward);
-	/*rra(a);
-	rrb(&b);
-	rrr(a, &b);
-	ra(a);
-	rb(&b);
-	rr(a, &b);
-	sa(a);
-	sb(&b);
-	ss(a, &b);*/
-	//ft_stackclear(&b, ft_free);
+
 }

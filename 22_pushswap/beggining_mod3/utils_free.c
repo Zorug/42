@@ -40,17 +40,13 @@ void	free_stack(t_dnode **stack)
 	t_dnode	*tmp;
 	t_dnode	*current;
 
-	//ft_printf(" !FREE0! ");
 	if (stack == NULL)// || *stack == NULL)
 		return ;
 	current = *stack;
 	while (current)
 	{
-		//ft_printf(" !FREE1! ");
 		tmp = current->next;
-		//////
 		current->value = 0;
-		//////
 		free(current);
 		current = tmp;
 	}
@@ -62,7 +58,6 @@ void	error_free(t_dnode **a, char **argv, bool flag_argc_2)
 	free_stack(a);
 	if (flag_argc_2)
 		free_matrix(argv);
-	//write(2, "Error\n", 6);
     ft_printf("Error\n");
 	exit(1);
 }

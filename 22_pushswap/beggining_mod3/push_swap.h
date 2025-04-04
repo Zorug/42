@@ -19,22 +19,78 @@ typedef struct	s_dnode {
 	bool			cheapest;
 }	t_dnode;
 
-/*typedef struct	s_data {
-	bool	flag_split;
-	int		word_pos;
-} t_data;*/
+//------- utils1
 
-t_dnode	*create_node(int value);
-void	append_node(t_dnode **stack, int nbr);
-void	append_node_prev(t_dnode **head, int value);
+t_dnode	*find_last_node(t_dnode *head);
+//t_dnode	*create_node(int value);
+//void	append_node(t_dnode **stack, int nbr);
+//void	append_node_prev(t_dnode **head, int value);
 void	print_list_foward(t_dnode *head);
 //void	print_list_backward(t_dnode * tail);
-void	free_list(t_dnode *head);
+void	print_cost(t_dnode *head);
+void	print_target(t_dnode *head);
+int	stack_len(t_dnode *stack);
 
-void    free_split(char **argv, bool flag_splt, int word_pos);
+//------- utils2
 
 bool	is_number(char *str);
 bool	is_unique(t_dnode *head_a, int nbr);
+//void	print_both(t_dnode *head_a, t_dnode *head_b);
+void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *));
+t_dnode	*get_cheapest(t_dnode *stack);
+void	prep_for_push(t_dnode **stack, t_dnode *top_node,
+	char stack_name);
+void	sort_three(t_dnode **a);
+//void	do_stuff(t_dnode **a);
+void	do_stuff(t_dnode **a, t_dnode **b);
+//void	do_stuff(t_dnode *a);
+//void	do_stuff(t_dnode *head_a, t_dnode *head_b);
+//void	do_stuff(t_dnode *head_a);
+
+//---- utils3
+void	ft_stackadd_front(t_dnode **stack, t_dnode *new);
+t_dnode	*ft_stack_new(long content);
+t_dnode	*ft_stack_last(t_dnode *stack);
+void	ft_stackadd_back(t_dnode **stack, t_dnode *new);
+int	argv_cnt(char **argv);
+t_dnode	*get_stack(int argc, char **argv);
+void	ft_sort(t_dnode **a);
+//void	ft_sort(t_dnode *a);
+
+//--- utils4
+void	rotate_both(t_dnode **a, t_dnode **b,
+	t_dnode *cheapest_node);
+void	rev_rotate_both(t_dnode **a, t_dnode **b,
+	t_dnode *cheapest_node);
+void	move_a_to_b(t_dnode **a, t_dnode **b);
+void	move_b_to_a(t_dnode **a, t_dnode **b);
+void	min_on_top(t_dnode **a);
+
+//--- utils5
+void	current_index(t_dnode *stack);
+t_dnode	*find_max(t_dnode *stack);
+void	set_target_a(t_dnode *a, t_dnode *b);
+t_dnode	*find_min(t_dnode *stack);
+void	set_target_b(t_dnode *a, t_dnode *b);
+void	cost_analysis_a(t_dnode *a,t_dnode *b);
+void	set_cheapest(t_dnode *stack);
+void	init_nodes_a(t_dnode *a, t_dnode *b);
+void	init_nodes_b(t_dnode *a, t_dnode *b);
+
+//--- utils_free
+void	ft_free(void *x);
+void	ft_stackclear(t_dnode **stack, void (*del)(void*));
+void	free_matrix(char **argv);
+void	free_stack(t_dnode **stack);
+void	error_free(t_dnode **a, char **argv, bool flag_argc_2);
+
+
+
+
+
+//void	free_list(t_dnode *head);
+
+//void    free_split(char **argv, bool flag_splt, int word_pos);
 
 //void	swap_a(t_dnode *head);
 void	swap(t_dnode **head);
@@ -78,66 +134,23 @@ void	pa(t_dnode **head_a, t_dnode **head_b);
 void	pb(t_dnode **head_b, t_dnode **head_a);
 //void	pb(t_dnode *head_b, t_dnode *head_a);
 
-//void	do_stuff(t_dnode **a);
-void	do_stuff(t_dnode **a, t_dnode **b);
-//void	do_stuff(t_dnode *a);
-//void	do_stuff(t_dnode *a);
-//void	do_stuff(t_dnode *head_a, t_dnode *head_b);
-//void	do_stuff(t_dnode *head_a);
-//void	print_both(t_dnode *head_a, t_dnode *head_b);
-void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *));
 
-t_dnode	*find_last_node(t_dnode *head);
+//void	push_cost(t_dnode **a, t_dnode **b);
 
-void	error_free(t_dnode **a, char **argv, bool flag_argc_2);
-void	free_stack(t_dnode **stack);
-void	free_matrix(char **argv);
 
-int	stack_len(t_dnode *stack);
-
-void	ft_free(void *x);
-void	ft_stackclear(t_dnode **stack, void (*del)(void*));
-void	ft_stackadd_front(t_dnode **stack, t_dnode *new);
-void	ft_stackadd_back(t_dnode **stack, t_dnode *new);
-t_dnode	*ft_stack_last(t_dnode *stack);
-t_dnode	*ft_stack_new(long content);
-t_dnode	*get_stack(int argc, char **argv);
-void	ft_sort(t_dnode **a);
-//void	ft_sort(t_dnode *a);
-
-void	push_cost(t_dnode **a, t_dnode **b);
-
-int	argv_cnt(char **argv);
-
-void	init_nodes_a(t_dnode *a, t_dnode *b);
-void	current_index(t_dnode *stack);
 ////////
 //t_dnode 	current_index(t_dnode *stack);
 //////////
-void	set_cheapest(t_dnode *stack);
 
-void	print_cost(t_dnode *head);
-void	print_both_cost(t_dnode *head_a, t_dnode *head_b);
-void	print_target(t_dnode *head);
+//void	print_both_cost(t_dnode *head_a, t_dnode *head_b);
 
 //static void	move_a_to_b(t_dnode **a, t_dnode **b);
 
-t_dnode	*get_cheapest(t_dnode *stack);
 
-//static void	rotate_both(t_dnode **a, t_dnode **b,
-//	t_dnode *cheapest_node);
 
-//static void	rev_rotate_both(t_dnode **a, t_dnode **b,
-//	t_dnode *cheapest_node);
 
-void	prep_for_push(t_dnode **stack, t_dnode *top_node,
-	char stack_name);
-
-void	sort_three(t_dnode **a);
-t_dnode	*find_max(t_dnode *stack);
-
-void	init_nodes_b(t_dnode *a, t_dnode *b);
-t_dnode	*find_min(t_dnode *stack);
 //static void	move_b_to_a(t_dnode **a, t_dnode **a);
+
+
 
 # endif
