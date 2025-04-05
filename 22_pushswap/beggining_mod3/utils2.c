@@ -128,33 +128,33 @@ void	do_stuff(t_dnode **a, t_dnode **b)
 	if (len_a-- > 3)
 		pb(a, b);
 
-	print_both(*a, *b, print_list_foward);
+//	print_both(*a, *b, print_list_foward);
 
 	while (len_a-- > 3)
  	{
 		init_nodes_a(*a, *b);
 
 
-		ft_printf("\n");	
+//		ft_printf("\n");	
 
 
 		move_a_to_b(a, b);
 
-		print_both(*a, *b, print_list_foward);
+//		print_both(*a, *b, print_list_foward);
 
 	}
 	sort_three(a);
-	print_both(*a, *b, print_list_foward);
+//	print_both(*a, *b, print_list_foward);
 
 	while (*b)
 	{
 		init_nodes_b(*a, *b);
 		move_b_to_a(a, b);
 	}
-	print_both(*a, *b, print_list_foward);
+//	print_both(*a, *b, print_list_foward);
 	current_index(*a);
-	print_both(*a, *b, print_list_foward);
+//	print_both(*a, *b, print_list_foward);
 	min_on_top(a);
-	print_both(*a, *b, print_list_foward);
+//	print_both(*a, *b, print_list_foward);
 
 }

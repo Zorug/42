@@ -59,7 +59,7 @@ int	argv_cnt(char **argv)
 		i++;
 		//*argv++;
 	}
-	ft_printf("\n!!%d!!\n", i);
+	//ft_printf("\n!!%d!!\n", i);
 	return (i);
 }
 
@@ -85,7 +85,8 @@ t_dnode	*get_stack(int argc, char **argv)
 	{
 		if (!is_number(argv[i]))
 			error_free(&a, argv, argv_free);
-		nbr = ft_atoi(argv[i]);
+		//nbr = ft_atoi(argv[i]);
+		nbr = ft_atol(argv[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error_free(&a, argv, argv_free);
 		if (!is_unique(a, nbr))
