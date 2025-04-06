@@ -1,9 +1,21 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/06 12:01:58 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/06 12:03:52 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	main (int argc, char **argv)
+#include "push_swap.h"
+
+int	main(int argc, char **argv)
 {
 	t_dnode	*head_a;
-	t_dnode *head_b;
+	t_dnode	*head_b;
 
 	head_a = NULL;
 	head_b = NULL;

@@ -1,10 +1,21 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils4.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/06 12:29:06 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/06 12:29:07 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	rotate_both(t_dnode **a, t_dnode **b,
 	t_dnode *cheapest_node)
 {
-	while (*b != cheapest_node->target_node
-			&& *a != cheapest_node)
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
 		rr(a, b);
 	current_index(*a);
 	current_index(*b);
@@ -14,7 +25,7 @@ void	rev_rotate_both(t_dnode **a, t_dnode **b,
 t_dnode *cheapest_node)
 {
 	while (*b != cheapest_node->target_node
-			&& *a != cheapest_node)
+		&& *a != cheapest_node)
 		rrr(a, b);
 	current_index(*a);
 	current_index(*b);

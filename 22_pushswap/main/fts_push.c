@@ -1,10 +1,22 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fts_push.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/06 12:01:05 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/06 12:02:42 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void 	pa(t_dnode **head_a, t_dnode **head_b)
+#include "push_swap.h"
+
+void	pa(t_dnode **head_a, t_dnode **head_b)
 {
-	t_dnode *tmp;
+	t_dnode	*tmp;
 
-	if(!(*head_b))
+	if (!(*head_b))
 		return ;
 	tmp = *head_b;
 	*head_b = (*head_b)->next;
