@@ -31,18 +31,6 @@ t_dnode *ft_stack_new(long content)
 	return (new);
 }
 
-/*t_dnode	*ft_stack_new(long content)
-{
-	t_dnode	*new;
-
-	new = (t_dnode *)malloc(sizeof(t_dnode));
-	if (!new)
-		return (NULL);
-	new->value = content;
-	new->next = NULL;
-	return (new);
-}*/
-
 t_dnode	*ft_stack_last(t_dnode *stack)
 {
 	if (!stack)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/06 09:38:05 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/06 09:38:06 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -8,7 +20,8 @@
 # include <limits.h>
 
 // Estrutura do nó da lista encadeada
-typedef struct	s_dnode {
+typedef struct s_dnode
+{
 	int				value;
 	int				push_cost;
 	int				index;
@@ -33,8 +46,7 @@ bool	is_number(char *str);
 bool	is_unique(t_dnode *head_a, int nbr);
 void	print_both(t_dnode *a, t_dnode *b, void (*func)(t_dnode *));
 t_dnode	*get_cheapest(t_dnode *stack);
-void	prep_for_push(t_dnode **stack, t_dnode *top_node,
-	char stack_name);
+void	prep_for_push(t_dnode **stack, t_dnode *top_node, char stack_name);
 void	sort_three(t_dnode **a);
 void	do_stuff(t_dnode **a, t_dnode **b);
 
@@ -45,10 +57,8 @@ t_dnode	*get_stack(int argc, char **argv);
 void	ft_sort(t_dnode **a, t_dnode **b);
 
 //--- utils4
-void	rotate_both(t_dnode **a, t_dnode **b,
-	t_dnode *cheapest_node);
-void	rev_rotate_both(t_dnode **a, t_dnode **b,
-	t_dnode *cheapest_node);
+void	rotate_both(t_dnode **a, t_dnode **b, t_dnode *cheapest_node);
+void	rev_rotate_both(t_dnode **a, t_dnode **b, t_dnode *cheapest_node);
 void	move_a_to_b(t_dnode **a, t_dnode **b);
 void	move_b_to_a(t_dnode **a, t_dnode **b);
 void	min_on_top(t_dnode **a);
@@ -59,7 +69,7 @@ t_dnode	*find_max(t_dnode *stack);
 void	set_target_a(t_dnode *a, t_dnode *b);
 t_dnode	*find_min(t_dnode *stack);
 void	set_target_b(t_dnode *a, t_dnode *b);
-void	cost_analysis_a(t_dnode *a,t_dnode *b);
+void	cost_analysis_a(t_dnode *a, t_dnode *b);
 void	set_cheapest(t_dnode *stack);
 void	init_nodes_a(t_dnode *a, t_dnode *b);
 void	init_nodes_b(t_dnode *a, t_dnode *b);
@@ -98,4 +108,4 @@ void	ss(t_dnode **head_a, t_dnode **head_b);
 void	pa(t_dnode **head_a, t_dnode **head_b);
 void	pb(t_dnode **head_b, t_dnode **head_a);
 
-# endif
+#endif

@@ -1,9 +1,21 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fts_rev_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/06 09:36:41 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/06 09:37:17 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	rev_rotate(t_dnode **head)
 {
 	t_dnode	*tmp;
-	t_dnode *penult;
+	t_dnode	*penult;
 
 	if (!(*head) || !(*head)->next)
 		return ;

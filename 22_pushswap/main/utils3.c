@@ -50,41 +50,6 @@ t_dnode	*get_stack(int argc, char **argv)
 	return (a);
 }
 
-
-/*t_dnode	*get_stack(int argc, char **argv)
-{
-	int		i;
-	t_dnode	*a;
-	long	nbr;
-	bool	argv_free;
-
-	argv_free = false;
-	i = 1;
-	a = NULL;
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		argc = argv_cnt(argv);
-		i = 0;
-		argv_free = true;
-	}
-	while (i < argc)
-	{
-		if (!is_number(argv[i]))
-			error_free(&a, argv, argv_free);
-		nbr = ft_atol(argv[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
-			error_free(&a, argv, argv_free);
-		if (!is_unique(a, nbr))
-			error_free(&a, argv, argv_free);
-		ft_stackadd_back(&a, ft_stack_new(nbr));
-		i++;
-	}
-	if (argv_free == true)
-		free_matrix(argv);
-	return (a);
-}*/
-
 void	ft_sort(t_dnode **a, t_dnode **b)
 {
 	do_stuff(a, b);
