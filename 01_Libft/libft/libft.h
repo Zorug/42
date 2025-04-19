@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:49:52 by cgross-s          #+#    #+#             */
-/*   Updated: 2024/11/02 20:00:12 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/03/16 14:25:00 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -45,12 +47,16 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+
+//char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
+
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -64,11 +70,20 @@ void	ft_putnbr_fd(int n, int fd);
 double	ft_atof(const char *nptr);
 char	*read_line(void);
 
+int		ft_putstr(char *str);
+int		ft_putchar(int c);
+int		ft_putnbr_base(unsigned long n, char *base_to);
+int		ft_putptr(void *ptr);
+int		ft_putnbr(int n);
+int		ft_putnbr_unsigned(unsigned int n);
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+# define BUFFER_SIZE 10
 
 typedef struct s_read_line //complemento de ft_read_line.c
 {
