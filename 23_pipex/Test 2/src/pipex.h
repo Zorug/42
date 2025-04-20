@@ -40,7 +40,15 @@ typedef enum	e_args
 	OUTFILE		// argv[4] → o arquivo de saída (file2)
 }	t_args;
 
+typedef enum	e_errors
+{
+	NO_COMAND = 0,
+	NO_FILE = 2,
+	BAD_FD = 9
+}	t_errors;
+
 // error_handling.c
+void	ft_free_memory(char **path, char *path_command);
 void	ft_free_array(char **array);
 int		ft_error(char *error_message);
 
@@ -55,10 +63,26 @@ int		array_size(char **array);
 char	*remove_backslashes(char *s);
 char	**remove_scape_symbol(char **s);
 
+// get_path.c
+char	*ft_get_path_aux(char **envp);
+char	*ft_check_command_location(char *command, char *path_i);
+char	*find_path(char *path_aux, char *command);
+char    *get_path(char *command, char **envp);
+
+// main.c
+void	init_pipex(t_pipex *pipex);
+void	check_args(t_pipex *pipex, char **argv, char **envp);
+
 // parcing_utils.c
 int		is_only_spaces(const char *str);
 void	copy_non_space_strings(char **dest, char **src);
 void	remove_spaces(char **array);
+
+// pipex_utils.c
+void	setup_infile(t_pipex *pipex, char **argv);
+
+// pipex.c
+void    ft_exec(t_pipex *pipex, char **envp, char **argv);
 
 // utils_1.c
 void	ft_putstr_fd(char *s, int fd);

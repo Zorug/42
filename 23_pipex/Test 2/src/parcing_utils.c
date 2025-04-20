@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "pipex.h"
 
 int	is_only_spaces(const char *str)
 {
@@ -37,4 +37,9 @@ void	remove_spaces(char **array)
 	if (array == NULL)
 		return ;
 	copy_non_space_strings(array, array);
+}
+
+char	*is_script(char *cmd)
+{
+	return (ft_strnstr(cmd, ".sh", ft_strlen(cmd)));
 }

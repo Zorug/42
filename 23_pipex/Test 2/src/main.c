@@ -52,5 +52,9 @@ int main(int argc, char **argv, char **envp)
 	check_args(&pipex, argv, envp); // quebra e localiza os comandos
 
 	ft_exec(&pipex, envp, argv); // pipe e fork
+
+	ft_cleanup(&pipex);
+
+	return (0);
 }
 

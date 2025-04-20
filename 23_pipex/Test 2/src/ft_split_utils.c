@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "pipex.h"
 
 /*
 Contar corretamente quantas palavras existem em uma string de comando, 

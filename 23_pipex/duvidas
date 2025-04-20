@@ -1,0 +1,27 @@
+pode me dar um exemplo com mais detalhes da implementacão de urandom?
+
+is_script
+ft_cleanup
+ft_execv
+
+if (pipex->args_cmd1 != NULL)
+{
+    // provavelmente verifica se é um arquivo .sh
+    if (!is_script(pipex->args_cmd1[0]))
+        pipex->path_cmd1 = ft_strdup(pipex->args_cmd1[0]);
+}
+
+char	*is_script(char *cmd)
+{
+	return (ft_strnstr(cmd, ".sh", ft_strlen(cmd)));
+}
+
+unlink(".pipex_urandom");
+
+access
+
+Qual o problema de ser um ficheiro .sh?
+
+!! REMOVER PROJETOS ANTIGOS DO GIT !!
+
+verificar handle_urandom.c e ft_read
