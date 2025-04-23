@@ -1,0 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/22 21:54:59 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/04/22 21:58:43 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "pipex.h"
+
+void	init_pipex(t_pipex *pipex)
+{
+	pipex->args_cmd1 = NULL;
+	pipex->args_cmd2 = NULL;
+	pipex->path_cmd1 = NULL;
+	pipex->path_cmd2 = NULL;
+	pipex->fd_infile = -1;
+	pipex->fd_outfile = -1;
+}
+
+void	check_args(t_pipex *pipex, char **argv, char **envp)
+{
+	if (argv[CMD1][0] == '\0')
+		pipex->args_cmd1 = NULL;
+	else
+	{
+		pipex->args_cmd1 = ft_split_mod(argv[CMD1]);
+		if (!pipex->args_cmd1)
+			pipex->args_cmd1 = NULL;
+		else
+			pipex->path_cmd1 = get_path(pipex->args_cmd1[0], envp);
+	}
+	if (argv[CMD2][0] == '\0')
+		pipex->args_cmd2 = NULL;
+	else
+	{
+		pipex->args_cmd2 = ft_split_mod(argv[CMD2]);
+		if (!pipex->args_cmd2)
+			pipex->path_cmd2 = NULL;
+		else
+			pipex->path_cmd2 = get_path(pipex->args_cmd2[0], envp);
+	}
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	t_pipex	pipex;
+
+	if (argc < 5)
+		ft_error("Usage: ./pipex file1 cmd1 cmd2 file2\n");
+	init_pipex(&pipex);
+	check_args(&pipex, argv, envp);
+	ft_exec(&pipex, envp, argv);
+	ft_cleanup(&pipex);
+	return (0);
+}
