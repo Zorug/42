@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 21:54:59 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/04/24 19:25:28 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/04/24 21:01:03 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,16 @@ int	main(int argc, char **argv, char **envp)
 /*
 echo -e "banana\nlaranja\nbanana\nuva\nabacaxi\nbanana" > input.txt
 
-valgrind --leak-check=full --show-leak-kinds=all 
---track-fds=yes --trace-children=yes ./pipex
+valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes ./pipex
 
 ./pipex input.txt "grep banana" "wc -l" output.txt
 < input.txt grep banana | wc -l > output.txt
 
-./pipex input.txt "cat -e" "cut -d\$ -f1" output.txt
+./pipex test_input.txt "cat -e" "wc -l" outfile.txt
+./pipex input.txt "cat" "echo" output.txt
 ./pipex input.txt "tr a-z A-Z" "rev" output.txt
+
+./pipex input.txt "cat -e" "cut -d\$ -f1" output.txt | JP error
 ./pipex input.txt "grep ^b" "sort -r" output.txt
 
 ./pipex input.txt "banana123" "wc -l" output.txt
