@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "type_traits": "c",
+        "libft.h": "c",
+        "random": "c"
+    }
+}
