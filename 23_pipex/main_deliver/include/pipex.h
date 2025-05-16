@@ -6,10 +6,9 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 21:16:41 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/04/25 21:25:49 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 08:50:40 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PIPEX_H
 # define PIPEX_H
