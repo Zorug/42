@@ -50,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
-	if (argc < 5)
+	if (argc != 5)
 		ft_error("Usage: ./pipex file1 cmd1 cmd2 file2\n");
 	init_pipex(&pipex);
 	check_args(&pipex, argv, envp);
