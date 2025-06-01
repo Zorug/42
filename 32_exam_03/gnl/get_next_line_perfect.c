@@ -1,180 +1,87 @@
-#include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42
 #endif
 
+size_t	ft_strlen(const char *s)
+{
+	size_t i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
 char	*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
-	if (c == '\0')
-		return ((char *)s);
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char *s1, const char *s2)
 {
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*new;
-	size_t	len1;
-	size_t	len2;
-	size_t	i;
-
-	if (!s1 || !s2)
+	size_t	len1 = ft_strlen(s1), len2 = ft_strlen(s2), i = 0, j = 0;
+	char	*res = malloc(len1 + len2 + 1);
+	if (!res)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	new = malloc(len1 + len2 + 1);
-	if (!new)
-		return (NULL);
-	i = 0;
-	while (i < len1)
+	while (s1 && s1[i])
 	{
-		new[i] = s1[i];
+		res[i] = s1[i];
 		i++;
 	}
-	i = 0;
-	while (i < len2)
-	{
-		new[len1 + i] = s2[i];
-		i++;
-	}
-	new[len1 + len2] = '\0';
-	return (new);
+	while (s2 && s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
+	if (s1)
+		free(s1);
+	return (res);
 }
 
-char	*ft_strdup(const char *s)
+void	ft_strcpy(char *dst, const char *src)
 {
-	char	*new;
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(s);
-	new = malloc(len + 1);
-	if (!new)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		new[i] = s[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*new;
-	size_t	s_len;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	new = malloc(len + 1);
-	if (!new)
-		return (NULL);
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-char	*extract_line(char **buffer)
-{
-	char	*line;
-	char	*newline_pos;
-	char	*temp;
-
-	if (!*buffer)
-		return (NULL);
-	newline_pos = ft_strchr(*buffer, '\n');
-	if (!newline_pos)
-		return (NULL);
-	line = ft_substr(*buffer, 0, (newline_pos - *buffer) + 1);
-	temp = ft_strdup(newline_pos + 1);
-	free(*buffer);
-	*buffer = temp;
-	return (line);
-}
-
-int	read_to_buffer(int fd, char **buffer)
-{
-	char	*temp_buffer;
-	char	*temp;
-	int		read_bytes;
-
-	temp_buffer = malloc(BUFFER_SIZE + 1);
-	if (!temp_buffer)
-		return (-1);
-	read_bytes = read(fd, temp_buffer, BUFFER_SIZE);
-	if (read_bytes <= 0)
-	{
-		free(temp_buffer);
-		return (read_bytes);
-	}
-	temp_buffer[read_bytes] = '\0';
-	if (!*buffer)
-		*buffer = ft_strdup(temp_buffer);
-	else
-	{
-		temp = ft_strjoin(*buffer, temp_buffer);
-		free(*buffer);
-		*buffer = temp;
-	}
-	free(temp_buffer);
-	return (read_bytes);
+	while (*src)
+		*dst++ = *src++;
+	*dst = '\0';
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*line;
-	int			read_bytes;
+	static char	buf[BUFFER_SIZE + 1] = {0};
+	char		*line = NULL, *nl;
+	int			bytes;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = extract_line(&buffer);
-	if (line)
-		return (line);
-	read_bytes = read_to_buffer(fd, &buffer);
-	if (read_bytes == -1)
+	while (1)
 	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
+		nl = ft_strchr(buf, '\n');
+		if (nl) // encontrou o \n?
+		{
+			nl++; // move o ponteiro para depois do '\n'
+			char tmp = *nl; // salva o próximo caractere
+			*nl = '\0'; // quebra a string após o '\n'
+			line = ft_strjoin(line, buf); // junta essa parte ao resultado
+			*nl = tmp; // restaura o caractere modificado
+			ft_strcpy(buf, nl); // move o restante do buffer para o começo
+			return (line); // retorna a linha pronta
+		}
+		line = ft_strjoin(line, buf); // Junta o conteúdo completo do buffer à linha parcial.
+		bytes = read(fd, buf, BUFFER_SIZE); // Lê mais dados do arquivo e armazena no buffer.
+		if (bytes <= 0) // read retornou erro (-1) ou EOF (0).
+		{
+			if (bytes < 0 || !line || !*line) // em caso de erro ou linha vazia
+				return (free(line), NULL);
+			buf[0] = '\0'; // Se havia dados parciais na line, retorna o que conseguiu montar (sem \n no final).
+			return (line);
+		}
+		buf[bytes] = '\0'; // Garante que o buffer lido termine com \0, tornando-o uma string C válida.
 	}
-	if (read_bytes == 0)
-	{
-		if (!buffer || !*buffer)
-			return (NULL);
-		line = buffer;
-		buffer = NULL;
-		return (line);
-	}
-	return (get_next_line(fd));
 }
