@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:04:24 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/06/15 19:37:12 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:23:11 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	eat(t_philo *philo)
 /*	Pegar os garfos com mutex
 	Atualizar estado
 	Esperar tempo comendo
-	Finalizar refeição 
-	
-	
-	----- Qual o motivo de ter meal lock duas vezes???? ---
-	*/
+	Finalizar refeição 	*/
 {
 	if (philo->id % 2)
 		pthread_mutex_lock(philo->r_fork);

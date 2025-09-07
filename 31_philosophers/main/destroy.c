@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/19 19:36:07 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/06/19 19:36:48 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	ft_free(t_data *data)
 {
-	free(data->forks); // desaloca os mutexes dos garfos
-	free(data->philos); // desaloca o array de filósofos
+	free(data->forks);
+	free(data->philos);
 }
 
 /* Destrói os mutexes que foram criados com pthread_mutex_init, 
@@ -13,14 +25,9 @@ void	ft_destroy(t_data *data)
 	int	i;
 
 	i = 0;
-	//dead_lock: protege a flag death.
 	pthread_mutex_destroy(&data->dead_lock);
-	//meal_lock: sincroniza acesso às refeições.
 	pthread_mutex_destroy(&data->meal_lock);
-	//write_lock: impede que múltiplas mensagens se misturem ao imprimir.
 	pthread_mutex_destroy(&data->write_lock);
-	/* Destroi cada mutex presente no array forks[], que representa 
-	um garfo entre os filósofos. */
 	while (i < data->philo_nbr)
 	{
 		pthread_mutex_destroy(&data->forks[i]);

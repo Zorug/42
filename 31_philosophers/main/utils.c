@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/19 19:30:15 by cgross-s          #+#    #+#             */
+/*   Updated: 2025/06/19 19:35:44 by cgross-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 size_t	ft_strlen(char *str)
@@ -62,9 +74,9 @@ int	is_number(char *str)
 	return (1);
 }
 
-/*Espera por um número de milissegundos, com mais precisão do que usleep direto.*/
-// int usleep(useconds_t microseconds);
-/*🚧 Problemas com usleep:
+/*Espera por um número de milissec, com mais precisão do que usleep direto.*/
+/* int usleep(useconds_t microseconds);
+🚧 Problemas com usleep:
 1. ❌ Imprecisão em tempos grandes:
     Pode acabar dormindo mais tempo do que o pedido, especialmente se outros 
 	processos interromperem a execução.
@@ -77,7 +89,7 @@ int	ft_usleep(size_t milliseconds)
 {
 	size_t	start;
 
-	start = get_time(); // Marca o tempo inicial
+	start = get_time();
 	while ((get_time() - start) < milliseconds)
 		usleep(500);
 	return (0);

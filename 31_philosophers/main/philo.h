@@ -6,7 +6,7 @@
 /*   By: cgross-s <cgross-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:41:13 by cgross-s          #+#    #+#             */
-/*   Updated: 2025/06/15 20:09:57 by cgross-s         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:39:40 by cgross-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Isso ajuda a visualizar o que cada filósofo está fazendo. */
 # define THINK "is thinking\n" 
 # define FORK "has taken a fork\n" 
 # define DIE "died\n" 
-# define FULL ORANGE "ALL PHILOSOPHERS ARE FULL!\n" 
+# define FULL "ALL PHILOSOPHERS ARE FULL!\n"
 
 typedef struct s_philo
 {
