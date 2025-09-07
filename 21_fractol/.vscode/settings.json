@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "testlib.h": "c",
-        "mlx.h": "c",
-        "random": "c"
-    }
-}
